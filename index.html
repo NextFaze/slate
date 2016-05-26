@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;iOS&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,8 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="iOS">iOS</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -113,7 +113,6 @@
       </div>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -121,167 +120,894 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Xerts REST API.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>This API is designed to work with the Xerts app and also allow 3rd party developers access to the Xerts coupon system.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<h1 id="getting-started">Getting Started</h1>
 
-<h1 id="authentication">Authentication</h1>
+<h6 id="last-updated-16-may-2016">Last updated: 16 May 2016</h6>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id="local">Local</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<ol>
+<li>access project root, type <code class="prettyprint">npm install</code> in terminal</li>
+<li>run tests with <code class="prettyprint">mocha</code></li>
+<li>launch server with <code class="prettyprint">NODE_ENV=development node .</code></li>
+</ol>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<h1 id="endpoints">Endpoints</h1>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<h6 id="last-updated-24-may-2016">Last updated: 24 May 2016</h6>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<h2 id="create-a-user">Create a User</h2>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Post parameters in JSON format in the body of the request: `{ username: &hellip;, email: &hellip;, etc. }`
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/members -d <span class="s2">"{
+  'phone': 'string',
+  'type': 'string',
+  'fname': 'string',
+  'lname': 'string',
+  'username': 'string',
+  'password': 'string',
+  'email': 'string',
+  'emailVerified': bool,
+  'status': 'string'
+}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023584620"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micky"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint creates a user.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST http://dev.xerts.io/api/members</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="body-parameters">Body Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>username</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>User contact Phone</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Type can be: [vendor_admin, site_admin]</td>
+</tr>
+<tr>
+<td>fname</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td>lname</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Last Name</td>
+</tr>
+</tbody></table>
+
+<h2 id="log-a-user-in">Log a user in</h2>
+
+<p>This endpoint logs a user in.</p>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QvS1bIt6WkhA6rCZXpUDnFnzszaU0WZBW0RWNtEMCqGZ4iOZ2Mc9EFKJsTmt1czU"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">1209600</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-26T05:17:55.231Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The <code class="prettyprint">id</code> is an authentication token. Use this token in request headers: <code class="prettyprint">{ Authentication: QvS1bIt6WkhA6rCZXpUDnFnzszaU0WZBW0RWNtEMCqGZ4iOZ2Mc9EFKJsTmt1czU }</code></p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/members/login</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>user&rsquo;s email address</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>users&rsquo;s password</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-vendor-for-user">Create a Vendor for User</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/members/:id/vendors -d <span class="s2">"{
+    'vendor_name': 'string',
+    'head_office_address1': 'string',
+    'head_office_address2': 'string',
+    'head_office_zipcode': 'string',
+    'head_office_city': 'string',
+    'head_office_country': 'string',
+    'head_office_phone': 'string',
+    'description': 'string'
+  }"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023584620"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micky"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a vendor for user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/members/:id/vendors</code></p>
+
+<aside class="notice">
+`id` is always a GUID. Replace this with the member with `id` you are creating a
+vendor for.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vendor_name</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Name of the organisation</td>
+</tr>
+<tr>
+<td>head_office_address1</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Address First line</td>
+</tr>
+<tr>
+<td>head_office_address2</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Address Second line</td>
+</tr>
+<tr>
+<td>head_office_address3</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Address Third line</td>
+</tr>
+<tr>
+<td>head_office_zipcode</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Zipcode</td>
+</tr>
+<tr>
+<td>head_office_city</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>City / Province</td>
+</tr>
+<tr>
+<td>head_office_country</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Country</td>
+</tr>
+<tr>
+<td>head_office_phone</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Contact Phone number</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Address First line</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-site-for-a-vendor">Create a Site for a Vendor</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/vendors/:id/sites -d <span class="s2">"{
+      'title': 'string',
+      'address': 'string',
+      'gps': {
+        'lat': 'float',
+        'lng': 'float'
+      }"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Whal Burger NY East"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34 22nd East. St."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101.890"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.456"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a site for a vendor.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/vendors/:id/sites</code></p>
+
+<aside class="notice">
+`id` is always a GUID. Replace this with the member with `id` you are creating a
+vendor for.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Site title (Branch/Franchise Location)</td>
+</tr>
+<tr>
+<td>address</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>If an address is available, add it here</td>
+</tr>
+<tr>
+<td>gps</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>If GPS position is available, add it here { lat: &lsquo;float&rsquo;, long: &#39;float&rsquo; }</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-user-owned-by-a-vendor">Create a User owned by a Vendor</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/vendors/:id/members -d <span class="s2">"{
+  'phone': 'string',
+  'type': 'string',
+  'fname': 'string',
+  'lname': 'string',
+  'username': 'string',
+  'password': 'string',
+  'email': 'string',
+  'emailVerified': bool,
+  'status': 'string'
+}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023584620"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micky"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a user that is owned by a vendor. This user can be assigned as admin of one of the vendor&rsquo;s sites, or as a vendor owner.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/vendors/:id/members</code></p>
+
+<aside class="notice">
+`id` is always a GUID. Replace this with the member with `id` you are creating a
+vendor for.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Conforms to User model</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>User contact Phone</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Type can be: [vendor_admin, site_admin]</td>
+</tr>
+<tr>
+<td>fname</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td>lname</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Last Name</td>
+</tr>
+</tbody></table>
+
+<h2 id="add-a-site-admin">Add a Site Admin</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT hostname/api/sites/:id/admin -d <span class="s2">"{
+  'adminId': 'string'
+}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74651f00-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Danielhaven"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"069 Jayne Vista"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.78</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">83.0154</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7461eab0-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"adminId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint adds a user to a site. User must be owned by the vendor that owns the site.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/sites/:id/admin</code></p>
+
+<aside class="notice">
+`id` is always a GUID. Replace this with the member with `id` you are creating a
+vendor for.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>The ID of the site (embed in URL)</td>
+</tr>
+<tr>
+<td>adminId</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>The ID of the user you want to set as admin of this site.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-an-offer-for-a-vendor">Create an Offer for a Vendor</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST hostname/api/vendors/:id/offers -d <span class="s2">"{
+  'title': 'string',
+  'description': 'string',
+  'style_bordercolor': 'string',
+  'style_backgroundcolor': 'string',
+  'feature_image': 'string'
+}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58b52db0-22e6-11e6-b8de-1b32b0fa4bd3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"West Bufordview"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illo aliquid eos velit quod. Eveniet facere vitae officia. Aliquam veniam iste. Adipisci laboriosam rerum eum ad ut molestiae hic. Doloremque et sit beatae reiciendis nisi reprehenderit eum ut ea.\n \rId voluptas quia non sunt distinctio. Molestiae alias maxime veritatis blanditiis vitae voluptas vitae non maiores. Nam cupiditate voluptatibus est aut. Qui repudiandae reiciendis in cumque dicta amet ipsum.\n \rConsequatur et magnam. Dicta corporis quasi sint distinctio neque et quis et. Quo nemo iste eveniet quibusdam suscipit velit sed."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5887b510-22e6-11e6-b8de-1b32b0fa4bd3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint adds an offer for a vendor. Vendor must be owned by logged in user to work.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/vendor/:id/offers</code></p>
+
+<aside class="notice">
+`id` is always a GUID. Replace this with the member with `id` you are creating a
+vendor for.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>The site title</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Description of the site</td>
+</tr>
+<tr>
+<td>style_bordercolor</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Border color styling</td>
+</tr>
+<tr>
+<td>style_backgroundcolor</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Background color styling</td>
+</tr>
+<tr>
+<td>feature_imagae</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Feature image for offer/coupon.</td>
+</tr>
+<tr>
+<td>vendorId</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Owning vendor ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="add-an-offer-to-a-site">Add an Offer to a Site</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT hostname/api/offers/:id/sites/rel/:siteId -d <span class="s2">"{
+  'instance_cost': 0.12,
+  'instance_limit': 1000,
+  'instance_issues': 3,
+  'total_cost': 120.00,
+  'instance_expiary_date': '2017-05-26'
+}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748ec710-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"instance_cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"instance_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1010</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"instance_issues"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total_cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">121.19999999999999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"instance_expiary_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-26"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"offerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748d1960-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74651f00-22e8-11e6-953c-b1e050c9762d"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint assigns an offer to a site. If an offer is assigned to a site, clients can receive coupons based on those offers at their sites.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://dev.xerts.io/api/offers/:id/sites/rel/:siteId</code></p>
+
+<aside class="notice">
+`id` and `siteId` are always a GUID.
+</aside>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>instance_cost</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Cost per coupon</td>
+</tr>
+<tr>
+<td>instance_limit</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Maximum number of coupons to be issued</td>
+</tr>
+<tr>
+<td>instance_issues</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Number of coupons been issued</td>
+</tr>
+<tr>
+<td>total_cost</td>
+<td>Y</td>
+<td>String</td>
+<td>N</td>
+<td>Total cost of campaign, given instance_cost and instance_limit</td>
+</tr>
+<tr>
+<td>instance_start_issue_date</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Time of first coupon issue</td>
+</tr>
+<tr>
+<td>instance_last_issue_date</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Last time a coupon was issued</td>
+</tr>
+<tr>
+<td>instance_expiary_date</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Expiary date of offer at site</td>
+</tr>
+</tbody></table>
+
+<h2 id="add-a-client-device">Add a Client Device</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/device/ -d <span class="s2">"{
+  'id': 'xxxx-xxxx-xxxx-xxxxx',
+  'device_model': 'iPhone 6s',
+  'device_os': 'iOS 9.3'
+}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89611c2c-f016-4e3b-8078-6abe40550552"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6s"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOS 9.3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a client device in the system. At this time there are no users associated devices, but this will change in future versions.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/devices</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>A unique identifier for the device will be posted to the API, generated by the client device it&rsquo;s self.</td>
+</tr>
+<tr>
+<td>device_model</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Device model eg. iPhone 7</td>
+</tr>
+<tr>
+<td>device_os</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>The operating system and version number.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-coupons-for-device-at-site">Create Coupons for Device at Site</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/siteOffers/:siteId/device/:deviceId
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q70Q7"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89611c2c-f016-4e3b-8078-6abe40550552"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748ec710-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748d1960-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Port Francis"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grey"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7461eab0-22e8-11e6-953c-b1e050c9762d"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the siteId does not exist, JSON error is returned:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Didnt return anything."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This generates coupons.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://dev.xerts.io/api/siteOffers/:siteId/device/:deviceId</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>A unique identifier for the device will be posted to the API, generated by the client device it&rsquo;s self.</td>
+</tr>
+<tr>
+<td>device_model</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Device model eg. iPhone 7</td>
+</tr>
+<tr>
+<td>device_os</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>The operating system and version number.</td>
 </tr>
 </tbody></table>
 
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -339,8 +1065,8 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="iOS">iOS</a>
           </div>
       </div>
     </div>
