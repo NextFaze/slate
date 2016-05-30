@@ -516,3 +516,112 @@ This generates coupons.
 
  Parameter | Required | Type | ID | Description
 ----------|----------|------|----|-------------------------------
+
+
+## Get all/site Coupons for Device
+
+> Use this command to get every coupon for device:
+
+```shell
+curl -X POST hostname/api/coupons/site/all/device/:deviceId
+```
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST hostname/api/coupons/site/:siteId/devices/:deviceId
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": [
+    {
+      "id": 10,
+      "redeem_code": "9CJBG",
+      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
+      "siteOfferId": "d634c6d0-25ff-11e6-b75e-7bf1c637b078",
+      "offer": {
+        "id": "d62fe4d0-25ff-11e6-b75e-7bf1c637b078",
+        "title": "Port Hal",
+        "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
+        "style_bordercolor": "sky blue",
+        "style_backgroundcolor": "magenta",
+        "feature_image": "string",
+        "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
+      }
+    },
+    {
+      "id": 11,
+      "redeem_code": "AO5XW",
+      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
+      "siteOfferId": "6ead4970-25fe-11e6-9f99-1520fe63256a",
+      "offer": {
+        "id": "6eab9bc0-25fe-11e6-9f99-1520fe63256a",
+        "title": "Millershire",
+        "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
+        "style_bordercolor": "maroon",
+        "style_backgroundcolor": "lime",
+        "feature_image": "string",
+        "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
+      }
+    }
+  ]
+}
+```
+
+This gets all existing coupons for the device. Be sure to use the `all`, otherwise you should use a `siteId` to get all site-specific coupons for that device.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId`
+`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
+
+## Redeem a coupon at a site
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST hostname/api/coupons/site/:siteId/redeem/:code
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": {
+    "id": 19,
+    "redeem_code": "B5Z7E",
+    "redeemed_date": "2016-05-30T03:14:18.000Z",
+    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
+    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
+  }
+}
+```
+
+This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET http://dev.xerts.io/api/coupons/:siteId/redeem/:code`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
