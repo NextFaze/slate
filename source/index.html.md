@@ -19,18 +19,38 @@ Welcome to the Xerts REST API.
 
 This API is designed to work with the Xerts app and also allow 3rd party developers access to the Xerts coupon system.
 
-# Getting Started
+## User Flow
 
-###### Last updated: 16 May 2016
+The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot. The staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the MVP method chosen.
+
+[![User flow diagram](images/xerts-user-diagram.png)](images/xerts-user-diagram.png)
+
+## Deploying
+
+###### Last updated: 30 May 2016
 
 ### Local
 
 1. access project root, type `npm install` in terminal
-2. run tests with `mocha`
-3. launch server with `NODE_ENV=development node .`
+2. launch server with `NODE_ENV=development node .`
+
+### Tests
+
+1. navigate to `./` (repository root)
+2. type `mocha --bail` to execute tests in sequence
+
+## Debug flags
+
+Debug at command-line using: `DEBUG=<debugFlag>` where debugFlag is one or more of the following:
+
+Debug Flag | Description
+-------|--------------------
+models | all model debugging
+Test-Endpoint-Return | debugs testing
+
 
 # Endpoints
-###### Last updated: 24 May 2016
+###### Last updated: 30 May 2016
 
 ## Create a User
 
@@ -593,7 +613,56 @@ None.      |
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST hostname/api/coupons/site/:siteId/redeem/:code
+curl -X POST hostname/api/sites/:siteId/
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": [
+    {
+      "id": 36,
+      "redeem_code": "D068Y",
+      "redeemed_date": "2016-05-30T06:54:36.000Z",
+      "deviceId": "656e6b6d-6a69-4e48-b66c-b917d3561ef0",
+      "siteOfferId": "5f750170-2633-11e6-a10f-a197e0a3258d",
+      "offer": {
+        "id": "5f732cb0-2633-11e6-a10f-a197e0a3258d",
+        "title": "North Lucileton",
+        "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
+        "style_bordercolor": "mint green",
+        "style_backgroundcolor": "azure",
+        "feature_image": "string",
+        "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
+      }
+    }
+  ]
+}
+```
+
+This endpoint gets all coupons for site with `siteId`.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET http://dev.xerts.io/api/sites/:siteId/coupons`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
+
+## Redeem a coupon at a site
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST hostname/api/coupons/sites/:siteId/redeem/:code
 ```
 
 > The above commands return JSON structured like this:
@@ -618,7 +687,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET http://dev.xerts.io/api/coupons/:siteId/redeem/:code`
+`GET http://dev.xerts.io/api/coupons/sites/:siteId/redeem/:code`
 
 ### Body Parameters
 
