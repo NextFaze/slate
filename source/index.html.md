@@ -21,32 +21,11 @@ This API is designed to work with the Xerts app and also allow 3rd party develop
 
 ## User Flow
 
-The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot. The staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the MVP method chosen.
+The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot. 
+
+Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the MVP method chosen.
 
 [![User flow diagram](images/xerts-user-diagram.png)](images/xerts-user-diagram.png)
-
-## Deploying
-
-###### Last updated: 30 May 2016
-
-### Local
-
-1. access project root, type `npm install` in terminal
-2. launch server with `NODE_ENV=development node .`
-
-### Tests
-
-1. navigate to `./` (repository root)
-2. type `mocha --bail` to execute tests in sequence
-
-## Debug flags
-
-Debug at command-line using: `DEBUG=<debugFlag>` where debugFlag is one or more of the following:
-
-Debug Flag | Description
--------|--------------------
-models | all model debugging
-Test-Endpoint-Return | debugs testing
 
 
 # Endpoints
