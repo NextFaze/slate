@@ -122,21 +122,53 @@
 
 <p>This API is designed to work with the Xerts app and also allow 3rd party developers access to the Xerts coupon system.</p>
 
-<h1 id="getting-started">Getting Started</h1>
+<h2 id="user-flow">User Flow</h2>
 
-<h6 id="last-updated-16-may-2016">Last updated: 16 May 2016</h6>
+<p>The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user&rsquo;s device. The user&rsquo;s device then receives access to a range of &lsquo;coupons&rsquo; for that POS, which are redeemable on the spot. The staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user&rsquo;s device. The communication and validation process may change in the future, however this is the MVP method chosen.</p>
+
+<p><a href="images/xerts-user-diagram.png"><img alt="User flow diagram" src="images/xerts-user-diagram.png" /></a></p>
+
+<h2 id="deploying">Deploying</h2>
+
+<h6 id="last-updated-30-may-2016">Last updated: 30 May 2016</h6>
 
 <h3 id="local">Local</h3>
 
 <ol>
 <li>access project root, type <code class="prettyprint">npm install</code> in terminal</li>
-<li>run tests with <code class="prettyprint">mocha</code></li>
 <li>launch server with <code class="prettyprint">NODE_ENV=development node .</code></li>
 </ol>
 
+<h3 id="tests">Tests</h3>
+
+<ol>
+<li>navigate to <code class="prettyprint">./</code> (repository root)</li>
+<li>type <code class="prettyprint">mocha --bail</code> to execute tests in sequence</li>
+</ol>
+
+<h2 id="debug-flags">Debug flags</h2>
+
+<p>Debug at command-line using: <code class="prettyprint">DEBUG=&lt;debugFlag&gt;</code> where debugFlag is one or more of the following:</p>
+
+<table><thead>
+<tr>
+<th>Debug Flag</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>models</td>
+<td>all model debugging</td>
+</tr>
+<tr>
+<td>Test-Endpoint-Return</td>
+<td>debugs testing</td>
+</tr>
+</tbody></table>
+
 <h1 id="endpoints">Endpoints</h1>
 
-<h6 id="last-updated-24-may-2016">Last updated: 24 May 2016</h6>
+<h6 id="last-updated-30-may-2016">Last updated: 30 May 2016</h6>
 
 <h2 id="create-a-user">Create a User</h2>
 
@@ -487,7 +519,7 @@ vendor for.
 <td>N</td>
 <td>String</td>
 <td>N</td>
-<td>If GPS position is available, add it here { lat: &lsquo;float&rsquo;, long: &#39;float&rsquo; }</td>
+<td>If GPS position is available, add it here { lat: &#39;float&rsquo;, long: &#39;float&rsquo; }</td>
 </tr>
 </tbody></table>
 
@@ -1071,7 +1103,70 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/coupons/site/:siteId/redeem/:code
+<pre class="highlight shell"><code>curl -X POST hostname/api/sites/:siteId/
+</code></pre>
+
+<blockquote>
+<p>The above commands return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D068Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"redeemed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-30T06:54:36.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"656e6b6d-6a69-4e48-b66c-b917d3561ef0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f750170-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f732cb0-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Lucileton"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f440660-2633-11e6-a10f-a197e0a3258d"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint gets all coupons for site with <code class="prettyprint">siteId</code>.</p>
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://dev.xerts.io/api/sites/:siteId/coupons</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="redeem-a-coupon-at-a-site">Redeem a coupon at a site</h2>
+
+<blockquote>
+<p>Use this command to get only site-specific coupons for device:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST hostname/api/coupons/sites/:siteId/redeem/:code
 </code></pre>
 
 <blockquote>
@@ -1096,7 +1191,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/:siteId/redeem/:code</code></p>
+<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/:siteId/redeem/:code</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
