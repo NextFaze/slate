@@ -124,47 +124,11 @@
 
 <h2 id="user-flow">User Flow</h2>
 
-<p>The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user&rsquo;s device. The user&rsquo;s device then receives access to a range of &lsquo;coupons&rsquo; for that POS, which are redeemable on the spot. The staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user&rsquo;s device. The communication and validation process may change in the future, however this is the MVP method chosen.</p>
+<p>The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user&rsquo;s device. The user&rsquo;s device then receives access to a range of &lsquo;coupons&rsquo; for that POS, which are redeemable on the spot. </p>
+
+<p>Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user&rsquo;s device. The communication and validation process may change in the future, however this is the MVP method chosen.</p>
 
 <p><a href="images/xerts-user-diagram.png"><img alt="User flow diagram" src="images/xerts-user-diagram.png" /></a></p>
-
-<h2 id="deploying">Deploying</h2>
-
-<h6 id="last-updated-30-may-2016">Last updated: 30 May 2016</h6>
-
-<h3 id="local">Local</h3>
-
-<ol>
-<li>access project root, type <code class="prettyprint">npm install</code> in terminal</li>
-<li>launch server with <code class="prettyprint">NODE_ENV=development node .</code></li>
-</ol>
-
-<h3 id="tests">Tests</h3>
-
-<ol>
-<li>navigate to <code class="prettyprint">./</code> (repository root)</li>
-<li>type <code class="prettyprint">mocha --bail</code> to execute tests in sequence</li>
-</ol>
-
-<h2 id="debug-flags">Debug flags</h2>
-
-<p>Debug at command-line using: <code class="prettyprint">DEBUG=&lt;debugFlag&gt;</code> where debugFlag is one or more of the following:</p>
-
-<table><thead>
-<tr>
-<th>Debug Flag</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>models</td>
-<td>all model debugging</td>
-</tr>
-<tr>
-<td>Test-Endpoint-Return</td>
-<td>debugs testing</td>
-</tr>
-</tbody></table>
 
 <h1 id="endpoints">Endpoints</h1>
 
