@@ -579,6 +579,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 ### HTTP Request
 
 `GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId`
+
 `GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
 
 ### Body Parameters
