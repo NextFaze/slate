@@ -21,7 +21,7 @@ This API is designed to work with the Xerts app and also allow 3rd party develop
 
 ## User Flow
 
-The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot. 
+The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot.
 
 Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the MVP method chosen.
 
@@ -587,12 +587,12 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 -----------|----------|------|----|-------------------------------
 None.      |
 
-## Redeem a coupon at a site
+## Get all coupons at a site
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST hostname/api/sites/:siteId/
+curl -X POST hostname/api/sites/:siteId/coupons
 ```
 
 > The above commands return JSON structured like this:
