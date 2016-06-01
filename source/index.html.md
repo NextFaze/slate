@@ -532,7 +532,7 @@ curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
 {
   "results": [
     {
-      "id": 2,
+      "id": "9e6c7f20-27a0-11e6-82bf-27ccd35b24dd",
       "redeem_code": "Q70Q7",
       "deviceId": "89611c2c-f016-4e3b-8078-6abe40550552",
       "siteOfferId": "748ec710-22e8-11e6-953c-b1e050c9762d",
