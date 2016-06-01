@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Xerts API Documentation
 
 language_tabs:
   - shell
@@ -28,10 +28,11 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 [![User flow diagram](images/xerts-user-diagram.png)](images/xerts-user-diagram.png)
 
 
-# Endpoints
 ###### Last updated: 30 May 2016
 
-## Create a User
+# Management Endpoints
+
+### Create a User
 
 <aside class="success">
 Post parameters in JSON format in the body of the request: `{ username: ..., email: ..., etc. }`
@@ -40,7 +41,7 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/members -d "{
+curl -X POST <hostname>/api/members -d "{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -93,7 +94,7 @@ This endpoint logs a user in.
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/members/login -d "{'email': 'string', 'password': 'string'}"
+curl -X POST <hostname>/api/members/login -d "{'email': 'string', 'password': 'string'}"
 ```
 
 > The above command returns JSON structured like this:
@@ -124,7 +125,7 @@ password |Y       |String|N | users's password
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/members/:id/vendors -d "{
+curl -X POST <hostname>/api/members/:id/vendors -d "{
     'vendor_name': 'string',
     'head_office_address1': 'string',
     'head_office_address2': 'string',
@@ -140,14 +141,16 @@ curl -X POST hostname/api/members/:id/vendors -d "{
 
 ```json
 {
-  "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
-  "phone": "023584620",
-  "type": "owner",
-  "fname": "Micky",
-  "lname": "Blue",
-  "username": "mblurulez",
-  "email": "bluezey@gmail.com",
-  "status": "active"
+  "id": "9e3b8410-27a0-11e6-82bf-27ccd35b24dd",
+  "vendor_name": "Kihn, Lang and Kub",
+  "head_office_address1": "762 Alexane Key",
+  "head_office_address2": "Apt. 160",
+  "head_office_zipcode": "66893",
+  "head_office_city": "Rubietown",
+  "head_office_country": "Argentina",
+  "head_office_phone": "1-653-021-8946 x487",
+  "description": "Sint tenetur consequatur qui aperiam debitis recusandae ea nihil blanditiis. Eos fugiat rerum mollitia ea. In iusto ut exercitationem ducimus. Fugiat quis quis sit et aliquid ut modi id.",
+  "ownerId": "9e1118b0-27a0-11e6-82bf-27ccd35b24dd"
 }
 ```
 
@@ -181,7 +184,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/vendors/:id/sites -d "{
+curl -X POST <hostname>/api/vendors/:id/sites -d "{
       'title': 'string',
       'address': 'string',
       'gps': {
@@ -228,7 +231,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/vendors/:id/members -d "{
+curl -X POST <hostname>/api/vendors/:id/members -d "{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -284,7 +287,7 @@ lname |N       |String|N |Last Name
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT hostname/api/sites/:id/admin -d "{
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/sites/:id/admin -d "{
   'adminId': 'string'
 }"
 ```
@@ -330,7 +333,7 @@ adminId         |Y       |String|Y |The ID of the user you want to set as admin 
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X POST hostname/api/vendors/:id/offers -d "{
+curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offers -d "{
   'title': 'string',
   'description': 'string',
   'style_bordercolor': 'string',
@@ -380,7 +383,7 @@ vendorId         |Y       |String|N |Owning vendor ID
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT hostname/api/offers/:id/sites/rel/:siteId -d "{
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/offers/:id/sites/rel/:siteId -d "{
   'instance_cost': 0.12,
   'instance_limit': 1000,
   'instance_issues': 3,
@@ -426,48 +429,101 @@ instance_start_issue_date         |N       |String|N |Time of first coupon issue
 instance_last_issue_date         |N       |String|N |Last time a coupon was issued
 instance_expiary_date         |N       |String|N |Expiary date of offer at site
 
-## Add a Client Device
+## Get all coupons for a Site
 
-> Use this command:
+> Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST hostname/api/device/ -d "{
-  'id': 'xxxx-xxxx-xxxx-xxxxx',
-  'device_model': 'iPhone 6s',
-  'device_os': 'iOS 9.3'
-}"
+curl -X POST <hostname>/api/sites/:siteId/coupons
 ```
 
-> The above command returns JSON structured like this:
+> The above commands return JSON structured like this:
 
 ```json
 {
-  "id": "89611c2c-f016-4e3b-8078-6abe40550552",
-  "device_model": "iPhone 6s",
-  "device_os": "iOS 9.3"
+  "results": [
+    {
+      "id": 36,
+      "redeem_code": "D068Y",
+      "redeemed_date": "2016-05-30T06:54:36.000Z",
+      "deviceId": "656e6b6d-6a69-4e48-b66c-b917d3561ef0",
+      "siteOfferId": "5f750170-2633-11e6-a10f-a197e0a3258d",
+      "offer": {
+        "id": "5f732cb0-2633-11e6-a10f-a197e0a3258d",
+        "title": "North Lucileton",
+        "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
+        "style_bordercolor": "mint green",
+        "style_backgroundcolor": "azure",
+        "feature_image": "string",
+        "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
+      }
+    }
+  ]
 }
 ```
 
-This endpoint creates a client device in the system. At this time there are no users associated devices, but this will change in future versions.
+This endpoint gets all coupons for site with `siteId`.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/devices`
+`GET http://dev.xerts.io/api/sites/:siteId/coupons`
 
 ### Body Parameters
 
  Parameter | Required | Type | ID | Description
-----------|----------|------|----|-------------------------------
-id         |Y       |String|Y |A unique identifier for the device will be posted to the API, generated by the client device it's self.
-device_model         |N       |String|N |Device model eg. iPhone 7
-device_os         |N       |String|N |The operating system and version number.
+-----------|----------|------|----|-------------------------------
+None.      |
+
+## Redeem a coupon at a site for device
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST <hostname>/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": {
+    "id": 19,
+    "redeem_code": "B5Z7E",
+    "redeemed_date": "2016-05-30T03:14:18.000Z",
+    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
+    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
+  }
+}
+```
+
+This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
+
+# Client Action Endpoints
 
 ## Create Coupons for Device at Site
 
 > Use this command:
 
 ```shell
-curl -X POST hostname/api/siteOffers/:siteId/device/:deviceId
+curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
 ```
 
 > The above command returns JSON structured like this:
@@ -505,7 +561,7 @@ curl -X POST hostname/api/siteOffers/:siteId/device/:deviceId
 }
 ```
 
-This generates coupons.
+This generates coupons for a device at a specific site. Use `:siteId` for the Site ID and `:deviceId` for the Device ID. If the device ID does not already exist in the sytem, it will be created.
 
 ### HTTP Request
 
@@ -517,18 +573,18 @@ This generates coupons.
 ----------|----------|------|----|-------------------------------
 
 
-## Get all/site Coupons for Device
+## Get Coupons for Device (all or for site)
 
 > Use this command to get every coupon for device:
 
 ```shell
-curl -X POST hostname/api/coupons/site/all/device/:deviceId
+curl -X POST <hostname>/api/coupons/site/all/device/:deviceId
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST hostname/api/coupons/site/:siteId/devices/:deviceId
+curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
 ```
 
 > The above commands return JSON structured like this:
@@ -588,89 +644,40 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 -----------|----------|------|----|-------------------------------
 None.      |
 
-## Get all coupons at a site
+# Debug (developers)
 
-> Use this command to get only site-specific coupons for device:
+## Add a Client Device
+
+> Use this command:
 
 ```shell
-curl -X POST hostname/api/sites/:siteId/coupons
+curl -X POST <hostname>/api/device/ -d "{
+  'id': 'xxxx-xxxx-xxxx-xxxxx',
+  'device_model': 'iPhone 6s',
+  'device_os': 'iOS 9.3'
+}"
 ```
 
-> The above commands return JSON structured like this:
+> The above command returns JSON structured like this:
 
 ```json
 {
-  "results": [
-    {
-      "id": 36,
-      "redeem_code": "D068Y",
-      "redeemed_date": "2016-05-30T06:54:36.000Z",
-      "deviceId": "656e6b6d-6a69-4e48-b66c-b917d3561ef0",
-      "siteOfferId": "5f750170-2633-11e6-a10f-a197e0a3258d",
-      "offer": {
-        "id": "5f732cb0-2633-11e6-a10f-a197e0a3258d",
-        "title": "North Lucileton",
-        "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
-        "style_bordercolor": "mint green",
-        "style_backgroundcolor": "azure",
-        "feature_image": "string",
-        "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
-      }
-    }
-  ]
+  "id": "89611c2c-f016-4e3b-8078-6abe40550552",
+  "device_model": "iPhone 6s",
+  "device_os": "iOS 9.3"
 }
 ```
 
-This endpoint gets all coupons for site with `siteId`.
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
+This endpoint creates a client device in the system. At this time there are no users associated devices, but this will change in future versions.
 
 ### HTTP Request
 
-`GET http://dev.xerts.io/api/sites/:siteId/coupons`
+`POST http://dev.xerts.io/api/devices`
 
 ### Body Parameters
 
  Parameter | Required | Type | ID | Description
------------|----------|------|----|-------------------------------
-None.      |
-
-## Redeem a coupon at a site
-
-> Use this command to get only site-specific coupons for device:
-
-```shell
-curl -X POST hostname/api/coupons/sites/:siteId/redeem/:code
-```
-
-> The above commands return JSON structured like this:
-
-```json
-{
-  "results": {
-    "id": 19,
-    "redeem_code": "B5Z7E",
-    "redeemed_date": "2016-05-30T03:14:18.000Z",
-    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
-    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
-  }
-}
-```
-
-This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
-
-### HTTP Request
-
-`GET http://dev.xerts.io/api/coupons/sites/:siteId/redeem/:code`
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
------------|----------|------|----|-------------------------------
-None.      |
+----------|----------|------|----|-------------------------------
+id         |Y       |String|Y |A unique identifier for the device will be posted to the API, generated by the client device it's self.
+device_model         |N       |String|N |Device model eg. iPhone 7
+device_os         |N       |String|N |The operating system and version number.
