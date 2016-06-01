@@ -21,14 +21,14 @@ This API is designed to work with the Xerts app and also allow 3rd party develop
 
 ## User Flow
 
-The API is designed with a specific user-flow in mind. When a user walks into a store with his/her app, they are presented with an NFC device to tap at the point of sale (POS). When tapping their device to the NFC POS device, a web address with a special unique identifier (Site ID) is relayed to the user's device. The user's device then receives access to a range of 'coupons' for that POS, which are redeemable on the spot.
+When a user walks to a location with his/her app, they are presented with a variety of coupon registration methods at the point of sale (POS). When using one of these registration methods, a web address with a special unique identifier is relayed to the user's device. The user's device then receives access to a range of 'coupons' which are redeemable on the spot.
 
-Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the MVP method chosen.
+Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the current way.
 
-[![User flow diagram](images/xerts-user-diagram.png)](images/xerts-user-diagram.png)
+[![User flow diagram](images/xerts-user-flow-01062016.png)](images/xerts-user-flow-01062016.png)
 
 
-###### Last updated: 30 May 2016
+###### Last updated: 1st June 2016
 
 # Management Endpoints
 
