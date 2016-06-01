@@ -130,11 +130,11 @@
 
 <p><a href="images/xerts-user-diagram.png"><img alt="User flow diagram" src="images/xerts-user-diagram.png" /></a></p>
 
-<h1 id="endpoints">Endpoints</h1>
-
 <h6 id="last-updated-30-may-2016">Last updated: 30 May 2016</h6>
 
-<h2 id="create-a-user">Create a User</h2>
+<h1 id="management-endpoints">Management Endpoints</h1>
+
+<h3 id="create-a-user">Create a User</h3>
 
 <aside class="success">
 Post parameters in JSON format in the body of the request: `{ username: &hellip;, email: &hellip;, etc. }`
@@ -143,7 +143,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/members -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members -d <span class="s2">"{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -246,7 +246,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
 </code></pre>
 
 <blockquote>
@@ -300,7 +300,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/members/:id/vendors -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/:id/vendors -d <span class="s2">"{
     'vendor_name': 'string',
     'head_office_address1': 'string',
     'head_office_address2': 'string',
@@ -419,7 +419,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/vendors/:id/sites -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/sites -d <span class="s2">"{
       'title': 'string',
       'address': 'string',
       'gps': {
@@ -492,7 +492,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/vendors/:id/members -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/members -d <span class="s2">"{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -598,7 +598,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT hostname/api/sites/:id/admin -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/sites/:id/admin -d <span class="s2">"{
   'adminId': 'string'
 }"</span>
 </code></pre>
@@ -664,7 +664,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST hostname/api/vendors/:id/offers -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST &lt;hostname&gt;/api/vendors/:id/offers -d <span class="s2">"{
   'title': 'string',
   'description': 'string',
   'style_bordercolor': 'string',
@@ -758,7 +758,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT hostname/api/offers/:id/sites/rel/:siteId -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/offers/:id/sites/rel/:siteId -d <span class="s2">"{
   'instance_cost': 0.12,
   'instance_limit': 1000,
   'instance_issues': 3,
@@ -854,33 +854,48 @@ vendor for.
 </tr>
 </tbody></table>
 
-<h2 id="add-a-client-device">Add a Client Device</h2>
+<h2 id="get-all-coupons-for-a-site">Get all coupons for a Site</h2>
 
 <blockquote>
-<p>Use this command:</p>
+<p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/device/ -d <span class="s2">"{
-  'id': 'xxxx-xxxx-xxxx-xxxxx',
-  'device_model': 'iPhone 6s',
-  'device_os': 'iOS 9.3'
-}"</span>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/sites/:siteId/coupons
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above commands return JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89611c2c-f016-4e3b-8078-6abe40550552"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"device_model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6s"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"device_os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOS 9.3"</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D068Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"redeemed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-30T06:54:36.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"656e6b6d-6a69-4e48-b66c-b917d3561ef0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f750170-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f732cb0-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Lucileton"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f440660-2633-11e6-a10f-a197e0a3258d"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint creates a client device in the system. At this time there are no users associated devices, but this will change in future versions.</p>
+<p>This endpoint gets all coupons for site with <code class="prettyprint">siteId</code>.</p>
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/devices</code></p>
+<p><code class="prettyprint">GET http://dev.xerts.io/api/sites/:siteId/coupons</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -894,34 +909,74 @@ vendor for.
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>Y</td>
-<td>String</td>
-<td>Y</td>
-<td>A unique identifier for the device will be posted to the API, generated by the client device it&rsquo;s self.</td>
-</tr>
-<tr>
-<td>device_model</td>
-<td>N</td>
-<td>String</td>
-<td>N</td>
-<td>Device model eg. iPhone 7</td>
-</tr>
-<tr>
-<td>device_os</td>
-<td>N</td>
-<td>String</td>
-<td>N</td>
-<td>The operating system and version number.</td>
+<td>None.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
+
+<h2 id="redeem-a-coupon-at-a-site-for-device">Redeem a coupon at a site for device</h2>
+
+<blockquote>
+<p>Use this command to get only site-specific coupons for device:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
+</code></pre>
+
+<blockquote>
+<p>The above commands return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5Z7E"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-30T03:14:18.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60ef5b5e-7229-4758-8184-da613de405a9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0583f660-2612-11e6-9206-cd9a11b559ba"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint redeems a coupon with redeem code <code class="prettyprint">:code</code> at site with id <code class="prettyprint">siteId</code>.</p>
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h1 id="client-action-endpoints">Client Action Endpoints</h1>
 
 <h2 id="create-coupons-for-device-at-site">Create Coupons for Device at Site</h2>
 
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/siteOffers/:siteId/device/:deviceId
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/siteOffers/:siteId/device/:deviceId
 </code></pre>
 
 <blockquote>
@@ -959,7 +1014,7 @@ vendor for.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This generates coupons.</p>
+<p>This generates coupons for a device at a specific site. Use <code class="prettyprint">:siteId</code> for the Site ID and <code class="prettyprint">:deviceId</code> for the Device ID. If the device ID does not already exist in the sytem, it will be created.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -978,18 +1033,18 @@ vendor for.
 </thead><tbody>
 </tbody></table>
 
-<h2 id="get-all-site-coupons-for-device">Get all/site Coupons for Device</h2>
+<h2 id="get-coupons-for-device-all-or-for-site">Get Coupons for Device (all or for site)</h2>
 
 <blockquote>
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/coupons/site/all/device/:deviceId
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/all/device/:deviceId
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/coupons/site/:siteId/devices/:deviceId
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/:siteId/devices/:deviceId
 </code></pre>
 
 <blockquote>
@@ -1063,48 +1118,35 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 </tbody></table>
 
-<h2 id="get-all-coupons-at-a-site">Get all coupons at a site</h2>
+<h1 id="debug-developers">Debug (developers)</h1>
+
+<h2 id="add-a-client-device">Add a Client Device</h2>
 
 <blockquote>
-<p>Use this command to get only site-specific coupons for device:</p>
+<p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/sites/:siteId/coupons
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/ -d <span class="s2">"{
+  'id': 'xxxx-xxxx-xxxx-xxxxx',
+  'device_model': 'iPhone 6s',
+  'device_os': 'iOS 9.3'
+}"</span>
 </code></pre>
 
 <blockquote>
-<p>The above commands return JSON structured like this:</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D068Y"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"redeemed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-30T06:54:36.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"656e6b6d-6a69-4e48-b66c-b917d3561ef0"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f750170-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f732cb0-2633-11e6-a10f-a197e0a3258d"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Lucileton"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f440660-2633-11e6-a10f-a197e0a3258d"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89611c2c-f016-4e3b-8078-6abe40550552"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPhone 6s"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOS 9.3"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint gets all coupons for site with <code class="prettyprint">siteId</code>.</p>
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
+<p>This endpoint creates a client device in the system. At this time there are no users associated devices, but this will change in future versions.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/sites/:siteId/coupons</code></p>
+<p><code class="prettyprint">POST http://dev.xerts.io/api/devices</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1118,63 +1160,25 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 </thead><tbody>
 <tr>
-<td>None.</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>A unique identifier for the device will be posted to the API, generated by the client device it&rsquo;s self.</td>
 </tr>
-</tbody></table>
-
-<h2 id="redeem-a-coupon-at-a-site">Redeem a coupon at a site</h2>
-
-<blockquote>
-<p>Use this command to get only site-specific coupons for device:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST hostname/api/coupons/sites/:siteId/redeem/:code
-</code></pre>
-
-<blockquote>
-<p>The above commands return JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5Z7E"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"redeemed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-30T03:14:18.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60ef5b5e-7229-4758-8184-da613de405a9"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0583f660-2612-11e6-9206-cd9a11b559ba"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint redeems a coupon with redeem code <code class="prettyprint">:code</code> at site with id <code class="prettyprint">siteId</code>.</p>
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/:siteId/redeem/:code</code></p>
-
-<h3 id="body-parameters">Body Parameters</h3>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>ID</th>
-<th>Description</th>
+<td>device_model</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>Device model eg. iPhone 7</td>
 </tr>
-</thead><tbody>
 <tr>
-<td>None.</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>device_os</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>The operating system and version number.</td>
 </tr>
 </tbody></table>
 
