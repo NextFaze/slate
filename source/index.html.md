@@ -32,7 +32,7 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 # Management Endpoints
 
-### Create a User
+## Create a User
 
 <aside class="success">
 Post parameters in JSON format in the body of the request: `{ username: ..., email: ..., etc. }`
