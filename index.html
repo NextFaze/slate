@@ -215,14 +215,14 @@
 <blockquote>
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/coupons/site/all/device/:deviceId <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/coupons/site/:siteId/devices/:deviceId <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
