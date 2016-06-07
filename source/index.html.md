@@ -106,14 +106,14 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 > Use this command to get every coupon for device:
 
 ```shell
-curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId \
+curl -X GET https://api.xerts.io/coupons/site/all/device/:deviceId \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId \
+curl -X GET https://api.xerts.io/coupons/site/:siteId/devices/:deviceId \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
