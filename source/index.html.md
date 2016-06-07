@@ -25,7 +25,7 @@ When a user walks to a location with his/her app, they are presented with a vari
 
 Staff at the site can manually redeem the coupon with an interface behind the counter. This is done via a 5-digit redeem code shown on the user's device. The communication and validation process may change in the future, however this is the current way.
 
-[![User flow diagram](images/xerts-user-flow-01062016.png)](images/xerts-user-flow-01062016.png)
+[![User flow diagram](images/xerts-user-flow-07062016.png)](images/xerts-user-flow-07062016.png)
 
 
 ###### Last updated: 1st June 2016
