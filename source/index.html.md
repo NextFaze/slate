@@ -30,6 +30,134 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 ###### Last updated: 1st June 2016
 
+# Client Action Endpoints
+
+## Create Coupons for Device at Site
+
+> Use this command:
+
+```shell
+curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "results": [
+    {
+      "id": "9e6c7f20-27a0-11e6-82bf-27ccd35b24dd",
+      "redeem_code": "Q70Q7",
+      "deviceId": "89611c2c-f016-4e3b-8078-6abe40550552",
+      "siteOfferId": "748ec710-22e8-11e6-953c-b1e050c9762d",
+      "offer": {
+        "id": "748d1960-22e8-11e6-953c-b1e050c9762d",
+        "title": "Port Francis",
+        "description": "Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non.",
+        "style_bordercolor": "grey",
+        "style_backgroundcolor": "salmon",
+        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "vendorId": "7461eab0-22e8-11e6-953c-b1e050c9762d"
+      }
+    }
+  ]
+}
+```
+
+> If the siteId does not exist, JSON error is returned:
+
+```json
+{
+  "error": {
+    "status": 404,
+    "message": "Didnt return anything."
+  }
+}
+```
+
+This generates coupons for a device at a specific site. Use `:siteId` for the Site ID and `:deviceId` for the Device ID. If the device ID does not already exist in the sytem, it will be created.
+
+### HTTP Request
+
+`POST http://dev.xerts.io/api/siteOffers/:siteId/device/:deviceId`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+----------|----------|------|----|-------------------------------
+
+
+## Get Coupons for Device (all or for site)
+
+> Use this command to get every coupon for device:
+
+```shell
+curl -X POST <hostname>/api/coupons/site/all/device/:deviceId
+```
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": [
+    {
+      "id": 10,
+      "redeem_code": "9CJBG",
+      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
+      "siteOfferId": "d634c6d0-25ff-11e6-b75e-7bf1c637b078",
+      "offer": {
+        "id": "d62fe4d0-25ff-11e6-b75e-7bf1c637b078",
+        "title": "Port Hal",
+        "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
+        "style_bordercolor": "sky blue",
+        "style_backgroundcolor": "magenta",
+        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
+      }
+    },
+    {
+      "id": 11,
+      "redeem_code": "AO5XW",
+      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
+      "siteOfferId": "6ead4970-25fe-11e6-9f99-1520fe63256a",
+      "offer": {
+        "id": "6eab9bc0-25fe-11e6-9f99-1520fe63256a",
+        "title": "Millershire",
+        "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
+        "style_bordercolor": "maroon",
+        "style_backgroundcolor": "lime",
+        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
+      }
+    }
+  ]
+}
+```
+
+This gets all existing coupons for the device. Be sure to use the `all`, otherwise you should use a `siteId` to get all site-specific coupons for that device.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId`
+
+`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
+
 # Management Endpoints
 
 ## Create a User
@@ -338,7 +466,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offer
   'description': 'string',
   'style_bordercolor': 'string',
   'style_backgroundcolor': 'string',
-  'feature_image': 'string'
+  'feature_image': 'URL-String'
 }"
 ```
 
@@ -351,7 +479,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offer
   "description": "Illo aliquid eos velit quod. Eveniet facere vitae officia. Aliquam veniam iste. Adipisci laboriosam rerum eum ad ut molestiae hic. Doloremque et sit beatae reiciendis nisi reprehenderit eum ut ea.\n \rId voluptas quia non sunt distinctio. Molestiae alias maxime veritatis blanditiis vitae voluptas vitae non maiores. Nam cupiditate voluptatibus est aut. Qui repudiandae reiciendis in cumque dicta amet ipsum.\n \rConsequatur et magnam. Dicta corporis quasi sint distinctio neque et quis et. Quo nemo iste eveniet quibusdam suscipit velit sed.",
   "style_bordercolor": "mint green",
   "style_backgroundcolor": "blue",
-  "feature_image": "string",
+  "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
   "vendorId": "5887b510-22e6-11e6-b8de-1b32b0fa4bd3"
 }
 ```
@@ -454,7 +582,7 @@ curl -X POST <hostname>/api/sites/:siteId/coupons
         "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
         "style_bordercolor": "mint green",
         "style_backgroundcolor": "azure",
-        "feature_image": "string",
+        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
         "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
       }
     }
@@ -521,134 +649,6 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 ### HTTP Request
 
 `GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
------------|----------|------|----|-------------------------------
-None.      |
-
-# Client Action Endpoints
-
-## Create Coupons for Device at Site
-
-> Use this command:
-
-```shell
-curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "results": [
-    {
-      "id": "9e6c7f20-27a0-11e6-82bf-27ccd35b24dd",
-      "redeem_code": "Q70Q7",
-      "deviceId": "89611c2c-f016-4e3b-8078-6abe40550552",
-      "siteOfferId": "748ec710-22e8-11e6-953c-b1e050c9762d",
-      "offer": {
-        "id": "748d1960-22e8-11e6-953c-b1e050c9762d",
-        "title": "Port Francis",
-        "description": "Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non.",
-        "style_bordercolor": "grey",
-        "style_backgroundcolor": "salmon",
-        "feature_image": "string",
-        "vendorId": "7461eab0-22e8-11e6-953c-b1e050c9762d"
-      }
-    }
-  ]
-}
-```
-
-> If the siteId does not exist, JSON error is returned:
-
-```json
-{
-  "error": {
-    "status": 404,
-    "message": "Didnt return anything."
-  }
-}
-```
-
-This generates coupons for a device at a specific site. Use `:siteId` for the Site ID and `:deviceId` for the Device ID. If the device ID does not already exist in the sytem, it will be created.
-
-### HTTP Request
-
-`POST http://dev.xerts.io/api/siteOffers/:siteId/device/:deviceId`
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
-----------|----------|------|----|-------------------------------
-
-
-## Get Coupons for Device (all or for site)
-
-> Use this command to get every coupon for device:
-
-```shell
-curl -X POST <hostname>/api/coupons/site/all/device/:deviceId
-```
-
-> Use this command to get only site-specific coupons for device:
-
-```shell
-curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
-```
-
-> The above commands return JSON structured like this:
-
-```json
-{
-  "results": [
-    {
-      "id": 10,
-      "redeem_code": "9CJBG",
-      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
-      "siteOfferId": "d634c6d0-25ff-11e6-b75e-7bf1c637b078",
-      "offer": {
-        "id": "d62fe4d0-25ff-11e6-b75e-7bf1c637b078",
-        "title": "Port Hal",
-        "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
-        "style_bordercolor": "sky blue",
-        "style_backgroundcolor": "magenta",
-        "feature_image": "string",
-        "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
-      }
-    },
-    {
-      "id": 11,
-      "redeem_code": "AO5XW",
-      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
-      "siteOfferId": "6ead4970-25fe-11e6-9f99-1520fe63256a",
-      "offer": {
-        "id": "6eab9bc0-25fe-11e6-9f99-1520fe63256a",
-        "title": "Millershire",
-        "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
-        "style_bordercolor": "maroon",
-        "style_backgroundcolor": "lime",
-        "feature_image": "string",
-        "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
-      }
-    }
-  ]
-}
-```
-
-This gets all existing coupons for the device. Be sure to use the `all`, otherwise you should use a `siteId` to get all site-specific coupons for that device.
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
-
-### HTTP Request
-
-`GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId`
-
-`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
 
 ### Body Parameters
 
