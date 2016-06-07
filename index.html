@@ -140,6 +140,7 @@
 <p>Use this command:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/siteOffers/:siteId/device/:deviceId
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -158,7 +159,7 @@
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grey"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.xerts.io/static/random_label1234567890.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7461eab0-22e8-11e6-953c-b1e050c9762d"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -202,12 +203,14 @@
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/all/device/:deviceId
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/:siteId/devices/:deviceId
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -226,7 +229,7 @@
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sky blue"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"magenta"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.xerts.io/static/random_label1234567890.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6055260-25ff-11e6-b75e-7bf1c637b078"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -241,7 +244,7 @@
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maroon"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lime"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.xerts.io/static/random_label1234567890.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e7fa9c0-25fe-11e6-9f99-1520fe63256a"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -303,6 +306,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
   'emailVerified': bool,
   'status': 'string'
 }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -396,6 +400,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <p>Use this command:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -449,7 +454,8 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/:id/vendors -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/:id/vendors -d
+  <span class="s2">"{
     'vendor_name': 'string',
     'head_office_address1': 'string',
     'head_office_address2': 'string',
@@ -459,6 +465,8 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
     'head_office_phone': 'string',
     'description': 'string'
   }"</span>
+  -H <span class="s2">"Authorization: &lt;Authorization key&gt;"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -570,13 +578,16 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/sites -d <span class="s2">"{
-      'title': 'string',
-      'address': 'string',
-      'gps': {
-        'lat': 'float',
-        'lng': 'float'
-      }"</span>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/sites -d
+  <span class="s2">"{
+    'title': 'string',
+    'address': 'string',
+    'gps': {
+      'lat': 'float',
+      'lng': 'float'
+    }
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -643,17 +654,19 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/members -d <span class="s2">"{
-  'phone': 'string',
-  'type': 'string',
-  'fname': 'string',
-  'lname': 'string',
-  'username': 'string',
-  'password': 'string',
-  'email': 'string',
-  'emailVerified': bool,
-  'status': 'string'
-}"</span>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/members -d
+  <span class="s2">"{
+    'phone': 'string',
+    'type': 'string',
+    'fname': 'string',
+    'lname': 'string',
+    'username': 'string',
+    'password': 'string',
+    'email': 'string',
+    'emailVerified': bool,
+    'status': 'string'
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -749,9 +762,11 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/sites/:id/admin -d <span class="s2">"{
-  'adminId': 'string'
-}"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/sites/:id/admin -d
+  <span class="s2">"{
+    'adminId': 'string'
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -815,13 +830,15 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST &lt;hostname&gt;/api/vendors/:id/offers -d <span class="s2">"{
-  'title': 'string',
-  'description': 'string',
-  'style_bordercolor': 'string',
-  'style_backgroundcolor': 'string',
-  'feature_image': 'URL-String'
-}"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST &lt;hostname&gt;/api/vendors/:id/offers -d
+  <span class="s2">"{
+    'title': 'string',
+    'description': 'string',
+    'style_bordercolor': 'string',
+    'style_backgroundcolor': 'string',
+    'feature_image': 'URL-String'
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -833,7 +850,7 @@ vendor for.
   </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illo aliquid eos velit quod. Eveniet facere vitae officia. Aliquam veniam iste. Adipisci laboriosam rerum eum ad ut molestiae hic. Doloremque et sit beatae reiciendis nisi reprehenderit eum ut ea.\n \rId voluptas quia non sunt distinctio. Molestiae alias maxime veritatis blanditiis vitae voluptas vitae non maiores. Nam cupiditate voluptatibus est aut. Qui repudiandae reiciendis in cumque dicta amet ipsum.\n \rConsequatur et magnam. Dicta corporis quasi sint distinctio neque et quis et. Quo nemo iste eveniet quibusdam suscipit velit sed."</span><span class="p">,</span><span class="w">
   </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.xerts.io/static/random_label1234567890.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5887b510-22e6-11e6-b8de-1b32b0fa4bd3"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -909,13 +926,15 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/offers/:id/sites/rel/:siteId -d <span class="s2">"{
-  'instance_cost': 0.12,
-  'instance_limit': 1000,
-  'instance_issues': 3,
-  'total_cost': 120.00,
-  'instance_expiary_date': '2017-05-26'
-}"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/offers/:id/sites/rel/:siteId -d
+  <span class="s2">"{
+    'instance_cost': 0.12,
+    'instance_limit': 1000,
+    'instance_issues': 3,
+    'total_cost': 120.00,
+    'instance_expiary_date': '2017-05-26'
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1011,6 +1030,7 @@ vendor for.
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/sites/:siteId/coupons
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1030,7 +1050,7 @@ vendor for.
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates."</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_bordercolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mint green"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"style_backgroundcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.xerts.io/static/random_label1234567890.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"feature_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f440660-2633-11e6-a10f-a197e0a3258d"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1074,6 +1094,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1139,11 +1160,13 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/ -d <span class="s2">"{
-  'id': 'xxxx-xxxx-xxxx-xxxxx',
-  'device_model': 'iPhone 6s',
-  'device_os': 'iOS 9.3'
-}"</span>
+<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/ -d
+  <span class="s2">"{
+    'id': 'xxxx-xxxx-xxxx-xxxxx',
+    'device_model': 'iPhone 6s',
+    'device_os': 'iOS 9.3'
+  }"</span>
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1202,6 +1225,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <p>Use this command:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/:id
+  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1258,15 +1282,15 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; The puppy requested is hidden for administrators only</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified puppy could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash; You tried to access a puppy with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
@@ -1274,7 +1298,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>Gone &ndash; The puppy requested has been removed from our servers</td>
 </tr>
 <tr>
 <td>418</td>
@@ -1282,7 +1306,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many puppies! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
