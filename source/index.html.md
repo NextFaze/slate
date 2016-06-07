@@ -33,7 +33,7 @@ In order for your app to use the `api.xerts.io` endpoints, you must be issued an
 
 1. Sign up as a User
 2. Register a Vendorship (create a vendor)
-3. Go [![here](https://api.xerts.io/app/add)] to register an app
+3. Go [here](https://api.xerts.io/app/add) to register an app
 4. Copy your API Key and lock it up.
 5. Use the API Key in your App and have fun.
 
