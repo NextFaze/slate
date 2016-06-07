@@ -139,8 +139,8 @@
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/siteOffers/:siteId/device/:deviceId
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -182,7 +182,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/siteOffers/:siteId/device/:deviceId</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -202,15 +202,15 @@
 <blockquote>
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/all/device/:deviceId
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/site/:siteId/devices/:deviceId
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -260,9 +260,9 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/all/devices/:deviceId</code></p>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -295,7 +295,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members -d <span class="s2">"{
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d <span class="s2">"{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -306,7 +306,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
   'emailVerified': bool,
   'status': 'string'
 }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -328,7 +328,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/members</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/members</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -399,8 +399,8 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -420,7 +420,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/members/login</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/members/login</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -454,7 +454,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/members/:id/vendors -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/:id/vendors -d
   <span class="s2">"{
     'vendor_name': 'string',
     'head_office_address1': 'string',
@@ -466,7 +466,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
     'description': 'string'
   }"</span>
   -H <span class="s2">"Authorization: &lt;Authorization key&gt;"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -490,7 +490,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/members/:id/vendors</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/members/:id/vendors</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -578,7 +578,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/sites -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/sites -d
   <span class="s2">"{
     'title': 'string',
     'address': 'string',
@@ -587,7 +587,7 @@ vendor for.
       'lng': 'float'
     }
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -608,7 +608,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/vendors/:id/sites</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/vendors/:id/sites</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -654,7 +654,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/vendors/:id/members -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/members -d
   <span class="s2">"{
     'phone': 'string',
     'type': 'string',
@@ -666,7 +666,7 @@ vendor for.
     'emailVerified': bool,
     'status': 'string'
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -688,7 +688,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/vendors/:id/members</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/vendors/:id/members</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -762,11 +762,11 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/sites/:id/admin -d
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT https://api.xerts.io/sites/:id/admin -d
   <span class="s2">"{
     'adminId': 'string'
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -791,7 +791,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/sites/:id/admin</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/sites/:id/admin</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -830,7 +830,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST &lt;hostname&gt;/api/vendors/:id/offers -d
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST https://api.xerts.io/vendors/:id/offers -d
   <span class="s2">"{
     'title': 'string',
     'description': 'string',
@@ -838,7 +838,7 @@ vendor for.
     'style_backgroundcolor': 'string',
     'feature_image': 'URL-String'
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -859,7 +859,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/vendor/:id/offers</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/vendor/:id/offers</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -926,7 +926,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT &lt;hostname&gt;/api/offers/:id/sites/rel/:siteId -d
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT https://api.xerts.io/offers/:id/sites/rel/:siteId -d
   <span class="s2">"{
     'instance_cost': 0.12,
     'instance_limit': 1000,
@@ -934,7 +934,7 @@ vendor for.
     'total_cost': 120.00,
     'instance_expiary_date': '2017-05-26'
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -956,7 +956,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT http://dev.xerts.io/api/offers/:id/sites/rel/:siteId</code></p>
+<p><code class="prettyprint">PUT https://api.xerts.io/offers/:id/sites/rel/:siteId</code></p>
 
 <aside class="notice">
 `id` and `siteId` are always a GUID.
@@ -1029,8 +1029,8 @@ vendor for.
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/sites/:siteId/coupons
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/sites/:siteId/coupons
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1066,7 +1066,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/sites/:siteId/coupons</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/sites/:siteId/coupons</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1093,8 +1093,8 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1131,7 +1131,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1160,13 +1160,13 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/ -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/ -d
   <span class="s2">"{
     'id': 'xxxx-xxxx-xxxx-xxxxx',
     'device_model': 'iPhone 6s',
     'device_os': 'iOS 9.3'
   }"</span>
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1183,7 +1183,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/devices</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/devices</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1224,8 +1224,8 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST &lt;hostname&gt;/api/device/:id
-  -H <span class="s2">"APIToken: '&lt;Insert API Token here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/:id
+  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1240,7 +1240,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://dev.xerts.io/api/devices/:id</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/devices/:id</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
