@@ -5,7 +5,7 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://api.xerts.io/'>Get an API Key</a>
 
 includes:
   - errors
@@ -27,8 +27,17 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 [![User flow diagram](images/xerts-user-flow-07062016.png)](images/xerts-user-flow-07062016.png)
 
+## API Key
 
-###### Last updated: 1st June 2016
+In order for your app to use the `api.xerts.io` endpoints, you must be issued an API Key first. Follow the steps below to obtain an API Key:
+
+    1. Sign up as a User
+    2. Register a Vendorship (create a vendor)
+    3. Go [![here](https://api.xerts.io/app/add)] to register an app
+    4. Copy your API Key and lock it up.
+    5. Use the API Key in your App and have fun.
+
+###### Last updated: 7th June 2016
 
 # Client Action Endpoints
 
