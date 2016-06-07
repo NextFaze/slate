@@ -37,8 +37,8 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -80,7 +80,7 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/siteOffers/:siteId/device/:deviceId`
+`POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId`
 
 ### Body Parameters
 
@@ -93,15 +93,15 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 > Use this command to get every coupon for device:
 
 ```shell
-curl -X POST <hostname>/api/coupons/site/all/device/:deviceId
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -151,9 +151,9 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET http://dev.xerts.io/api/coupons/sites/all/devices/:deviceId`
+`GET https://api.xerts.io/coupons/sites/all/devices/:deviceId`
 
-`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
+`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId`
 
 ### Body Parameters
 
@@ -172,7 +172,7 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/members -d "{
+curl -X POST https://api.xerts.io/members -d "{
   'phone': 'string',
   'type': 'string',
   'fname': 'string',
@@ -183,7 +183,7 @@ curl -X POST <hostname>/api/members -d "{
   'emailVerified': bool,
   'status': 'string'
 }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -205,7 +205,7 @@ This endpoint creates a user.
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/members`
+`POST https://api.xerts.io/members`
 
 ### Body Parameters
 
@@ -226,8 +226,8 @@ This endpoint logs a user in.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/members/login -d "{'email': 'string', 'password': 'string'}"
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/members/login -d "{'email': 'string', 'password': 'string'}"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -244,7 +244,7 @@ curl -X POST <hostname>/api/members/login -d "{'email': 'string', 'password': 's
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/members/login`
+`POST https://api.xerts.io/members/login`
 
 ### Body Parameters
 
@@ -258,7 +258,7 @@ password |Y       |String|N | users's password
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/members/:id/vendors -d
+curl -X POST https://api.xerts.io/members/:id/vendors -d
   "{
     'vendor_name': 'string',
     'head_office_address1': 'string',
@@ -270,7 +270,7 @@ curl -X POST <hostname>/api/members/:id/vendors -d
     'description': 'string'
   }"
   -H "Authorization: <Authorization key>"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -294,7 +294,7 @@ This endpoint creates a vendor for user.
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/members/:id/vendors`
+`POST https://api.xerts.io/members/:id/vendors`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -320,7 +320,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/vendors/:id/sites -d
+curl -X POST https://api.xerts.io/vendors/:id/sites -d
   "{
     'title': 'string',
     'address': 'string',
@@ -329,7 +329,7 @@ curl -X POST <hostname>/api/vendors/:id/sites -d
       'lng': 'float'
     }
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -350,7 +350,7 @@ This endpoint creates a site for a vendor.
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/vendors/:id/sites`
+`POST https://api.xerts.io/vendors/:id/sites`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -370,7 +370,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/vendors/:id/members -d
+curl -X POST https://api.xerts.io/vendors/:id/members -d
   "{
     'phone': 'string',
     'type': 'string',
@@ -382,7 +382,7 @@ curl -X POST <hostname>/api/vendors/:id/members -d
     'emailVerified': bool,
     'status': 'string'
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -404,7 +404,7 @@ This endpoint creates a user that is owned by a vendor. This user can be assigne
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/vendors/:id/members`
+`POST https://api.xerts.io/vendors/:id/members`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -428,11 +428,11 @@ lname |N       |String|N |Last Name
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/sites/:id/admin -d
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT https://api.xerts.io/sites/:id/admin -d
   "{
     'adminId': 'string'
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -457,7 +457,7 @@ This endpoint adds a user to a site. User must be owned by the vendor that owns 
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/sites/:id/admin`
+`POST https://api.xerts.io/sites/:id/admin`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -476,7 +476,7 @@ adminId         |Y       |String|Y |The ID of the user you want to set as admin 
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offers -d
+curl -H "Authorization: <ACCESS_TOKEN>" -X POST https://api.xerts.io/vendors/:id/offers -d
   "{
     'title': 'string',
     'description': 'string',
@@ -484,7 +484,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offer
     'style_backgroundcolor': 'string',
     'feature_image': 'URL-String'
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -505,7 +505,7 @@ This endpoint adds an offer for a vendor. Vendor must be owned by logged in user
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/vendor/:id/offers`
+`POST https://api.xerts.io/vendor/:id/offers`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -528,7 +528,7 @@ vendorId         |Y       |String|N |Owning vendor ID
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/offers/:id/sites/rel/:siteId -d
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT https://api.xerts.io/offers/:id/sites/rel/:siteId -d
   "{
     'instance_cost': 0.12,
     'instance_limit': 1000,
@@ -536,7 +536,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/offers/:id/sites/r
     'total_cost': 120.00,
     'instance_expiary_date': '2017-05-26'
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -558,7 +558,7 @@ This endpoint assigns an offer to a site. If an offer is assigned to a site, cli
 
 ### HTTP Request
 
-`PUT http://dev.xerts.io/api/offers/:id/sites/rel/:siteId`
+`PUT https://api.xerts.io/offers/:id/sites/rel/:siteId`
 
 <aside class="notice">
 `id` and `siteId` are always a GUID.
@@ -581,8 +581,8 @@ instance_expiary_date         |N       |String|N |Expiary date of offer at site
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST <hostname>/api/sites/:siteId/coupons
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/sites/:siteId/coupons
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -618,7 +618,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET http://dev.xerts.io/api/sites/:siteId/coupons`
+`GET https://api.xerts.io/sites/:siteId/coupons`
 
 ### Body Parameters
 
@@ -631,8 +631,8 @@ None.      |
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST <hostname>/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -669,7 +669,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET http://dev.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
 
 ### Body Parameters
 
@@ -684,13 +684,13 @@ None.      |
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/device/ -d
+curl -X POST https://api.xerts.io/device/ -d
   "{
     'id': 'xxxx-xxxx-xxxx-xxxxx',
     'device_model': 'iPhone 6s',
     'device_os': 'iOS 9.3'
   }"
-  -H "APIToken: '<Insert API Token here>'"
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -707,7 +707,7 @@ This endpoint creates a client device in the system. At this time there are no u
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/devices`
+`POST https://api.xerts.io/devices`
 
 ### Body Parameters
 
@@ -722,8 +722,8 @@ device_os         |N       |String|N |The operating system and version number.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/device/:id
-  -H "APIToken: '<Insert API Token here>'"
+curl -X POST https://api.xerts.io/device/:id
+  -H "APIKey: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -738,7 +738,7 @@ This endpoint checks if a device exists.
 
 ### HTTP Request
 
-`POST http://dev.xerts.io/api/devices/:id`
+`POST https://api.xerts.io/devices/:id`
 
 ### Body Parameters
 
