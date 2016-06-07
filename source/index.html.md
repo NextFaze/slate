@@ -56,7 +56,7 @@ curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
         "description": "Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non.",
         "style_bordercolor": "grey",
         "style_backgroundcolor": "salmon",
-        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "feature_image": "http://lorempixel.com/720/300/",
         "vendorId": "7461eab0-22e8-11e6-953c-b1e050c9762d"
       }
     }
@@ -117,7 +117,7 @@ curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
         "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
         "style_bordercolor": "sky blue",
         "style_backgroundcolor": "magenta",
-        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "feature_image": "http://lorempixel.com/720/300/",
         "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
       }
     },
@@ -132,7 +132,7 @@ curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
         "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
         "style_bordercolor": "maroon",
         "style_backgroundcolor": "lime",
-        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "feature_image": "http://lorempixel.com/720/300/",
         "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
       }
     }
@@ -253,7 +253,8 @@ password |Y       |String|N | users's password
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/members/:id/vendors -d "{
+curl -X POST <hostname>/api/members/:id/vendors -d
+  -H "Authorization: <Authorization key>""{
     'vendor_name': 'string',
     'head_office_address1': 'string',
     'head_office_address2': 'string',
@@ -479,7 +480,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offer
   "description": "Illo aliquid eos velit quod. Eveniet facere vitae officia. Aliquam veniam iste. Adipisci laboriosam rerum eum ad ut molestiae hic. Doloremque et sit beatae reiciendis nisi reprehenderit eum ut ea.\n \rId voluptas quia non sunt distinctio. Molestiae alias maxime veritatis blanditiis vitae voluptas vitae non maiores. Nam cupiditate voluptatibus est aut. Qui repudiandae reiciendis in cumque dicta amet ipsum.\n \rConsequatur et magnam. Dicta corporis quasi sint distinctio neque et quis et. Quo nemo iste eveniet quibusdam suscipit velit sed.",
   "style_bordercolor": "mint green",
   "style_backgroundcolor": "blue",
-  "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+  "feature_image": "http://lorempixel.com/720/300/",
   "vendorId": "5887b510-22e6-11e6-b8de-1b32b0fa4bd3"
 }
 ```
@@ -582,7 +583,7 @@ curl -X POST <hostname>/api/sites/:siteId/coupons
         "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
         "style_bordercolor": "mint green",
         "style_backgroundcolor": "azure",
-        "feature_image": "http://www.xerts.io/static/random_label1234567890.jpg",
+        "feature_image": "http://lorempixel.com/720/300/",
         "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
       }
     }
