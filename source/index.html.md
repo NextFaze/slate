@@ -38,6 +38,7 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 ```shell
 curl -X POST <hostname>/api/siteOffers/:siteId/device/:deviceId
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -93,12 +94,14 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 
 ```shell
 curl -X POST <hostname>/api/coupons/site/all/device/:deviceId
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
 curl -X POST <hostname>/api/coupons/site/:siteId/devices/:deviceId
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -180,6 +183,7 @@ curl -X POST <hostname>/api/members -d "{
   'emailVerified': bool,
   'status': 'string'
 }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -223,6 +227,7 @@ This endpoint logs a user in.
 
 ```shell
 curl -X POST <hostname>/api/members/login -d "{'email': 'string', 'password': 'string'}"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -244,9 +249,9 @@ curl -X POST <hostname>/api/members/login -d "{'email': 'string', 'password': 's
 ### Body Parameters
 
 Parameter | Required | Type | ID | Description
-----------|----------|------|----|--------------------------------------
-email |Y       |String|N | user's email address                    
-password |Y       |String|N | users's password                   
+----------|----------|------|----|-------------------------
+email |Y       |String|N | user's email address            
+password |Y       |String|N | users's password             
 
 ## Create a Vendor for User
 
@@ -254,7 +259,7 @@ password |Y       |String|N | users's password
 
 ```shell
 curl -X POST <hostname>/api/members/:id/vendors -d
-  -H "Authorization: <Authorization key>""{
+  "{
     'vendor_name': 'string',
     'head_office_address1': 'string',
     'head_office_address2': 'string',
@@ -264,6 +269,8 @@ curl -X POST <hostname>/api/members/:id/vendors -d
     'head_office_phone': 'string',
     'description': 'string'
   }"
+  -H "Authorization: <Authorization key>"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -313,13 +320,16 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/vendors/:id/sites -d "{
-      'title': 'string',
-      'address': 'string',
-      'gps': {
-        'lat': 'float',
-        'lng': 'float'
-      }"
+curl -X POST <hostname>/api/vendors/:id/sites -d
+  "{
+    'title': 'string',
+    'address': 'string',
+    'gps': {
+      'lat': 'float',
+      'lng': 'float'
+    }
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -360,17 +370,19 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/vendors/:id/members -d "{
-  'phone': 'string',
-  'type': 'string',
-  'fname': 'string',
-  'lname': 'string',
-  'username': 'string',
-  'password': 'string',
-  'email': 'string',
-  'emailVerified': bool,
-  'status': 'string'
-}"
+curl -X POST <hostname>/api/vendors/:id/members -d
+  "{
+    'phone': 'string',
+    'type': 'string',
+    'fname': 'string',
+    'lname': 'string',
+    'username': 'string',
+    'password': 'string',
+    'email': 'string',
+    'emailVerified': bool,
+    'status': 'string'
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -416,9 +428,11 @@ lname |N       |String|N |Last Name
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/sites/:id/admin -d "{
-  'adminId': 'string'
-}"
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/sites/:id/admin -d
+  "{
+    'adminId': 'string'
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -462,13 +476,15 @@ adminId         |Y       |String|Y |The ID of the user you want to set as admin 
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offers -d "{
-  'title': 'string',
-  'description': 'string',
-  'style_bordercolor': 'string',
-  'style_backgroundcolor': 'string',
-  'feature_image': 'URL-String'
-}"
+curl -H "Authorization: <ACCESS_TOKEN>" -X POST <hostname>/api/vendors/:id/offers -d
+  "{
+    'title': 'string',
+    'description': 'string',
+    'style_bordercolor': 'string',
+    'style_backgroundcolor': 'string',
+    'feature_image': 'URL-String'
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -512,13 +528,15 @@ vendorId         |Y       |String|N |Owning vendor ID
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/offers/:id/sites/rel/:siteId -d "{
-  'instance_cost': 0.12,
-  'instance_limit': 1000,
-  'instance_issues': 3,
-  'total_cost': 120.00,
-  'instance_expiary_date': '2017-05-26'
-}"
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT <hostname>/api/offers/:id/sites/rel/:siteId -d
+  "{
+    'instance_cost': 0.12,
+    'instance_limit': 1000,
+    'instance_issues': 3,
+    'total_cost': 120.00,
+    'instance_expiary_date': '2017-05-26'
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -564,6 +582,7 @@ instance_expiary_date         |N       |String|N |Expiary date of offer at site
 
 ```shell
 curl -X POST <hostname>/api/sites/:siteId/coupons
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -613,6 +632,7 @@ None.      |
 
 ```shell
 curl -X POST <hostname>/api/coupons/sites/:siteId/device/:deviceId/redeem/:code
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -664,11 +684,13 @@ None.      |
 > Use this command:
 
 ```shell
-curl -X POST <hostname>/api/device/ -d "{
-  'id': 'xxxx-xxxx-xxxx-xxxxx',
-  'device_model': 'iPhone 6s',
-  'device_os': 'iOS 9.3'
-}"
+curl -X POST <hostname>/api/device/ -d
+  "{
+    'id': 'xxxx-xxxx-xxxx-xxxxx',
+    'device_model': 'iPhone 6s',
+    'device_os': 'iOS 9.3'
+  }"
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -701,6 +723,7 @@ device_os         |N       |String|N |The operating system and version number.
 
 ```shell
 curl -X POST <hostname>/api/device/:id
+  -H "APIToken: '<Insert API Token here>'"
 ```
 
 > The above command returns JSON structured like this:
