@@ -130,17 +130,18 @@
 
 <p><a href="images/xerts-user-flow-07062016.png"><img alt="User flow diagram" src="images/xerts-user-flow-07062016.png" /></a></p>
 
-<h2 id="api-key">API Key</h2>
+<h2 id="authentication">Authentication</h2>
 
-<p>In order for your app to use the <code class="prettyprint">api.xerts.io</code> endpoints, you must be issued an API Key first. Follow the steps below to obtain an API Key:</p>
+<p>Xerts API requests require a <code class="prettyprint">API-Key</code>. To get an API-Key for Xerts, email xerts@xped.com.</p>
 
-<ol>
-<li>Sign up as a User</li>
-<li>Register a Vendorship (create a vendor)</li>
-<li>Go <a href="https://api.xerts.io/app/add">here</a> to register an app</li>
-<li>Copy your API Key and lock it up.</li>
-<li>Use the API Key in your App and have fun.</li>
-</ol>
+<p>Include the API-Key in every request as a HTTP header.</p>
+
+<blockquote>
+<p>Like so:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/ <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
+</code></pre>
 
 <h6 id="last-updated-7th-june-2016">Last updated: 7th June 2016</h6>
 
@@ -151,8 +152,8 @@
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -214,15 +215,15 @@
 <blockquote>
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -307,18 +308,19 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d <span class="s2">"{
-  'phone': 'string',
-  'type': 'string',
-  'fname': 'string',
-  'lname': 'string',
-  'username': 'string',
-  'password': 'string',
-  'email': 'string',
-  'emailVerified': bool,
-  'status': 'string'
-}"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'phone': 'string', </span><span class="se">\</span><span class="s2">
+    'type': 'string', </span><span class="se">\</span><span class="s2">
+    'fname': 'string', </span><span class="se">\</span><span class="s2">
+    'lname': 'string', </span><span class="se">\</span><span class="s2">
+    'username': 'string', </span><span class="se">\</span><span class="s2">
+    'password': 'string', </span><span class="se">\</span><span class="s2">
+    'email': 'string', </span><span class="se">\</span><span class="s2">
+    'emailVerified': bool, </span><span class="se">\</span><span class="s2">
+    'status': 'string' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -411,8 +413,12 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/login -d <span class="s2">"{'email': 'string', 'password': 'string'}"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/login -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'email': 'string', </span><span class="se">\</span><span class="s2">
+    'password': 'string'
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -467,18 +473,18 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <p>Use this command:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/:id/vendors -d
-  <span class="s2">"{
-    'vendor_name': 'string',
-    'head_office_address1': 'string',
-    'head_office_address2': 'string',
-    'head_office_zipcode': 'string',
-    'head_office_city': 'string',
-    'head_office_country': 'string',
-    'head_office_phone': 'string',
-    'description': 'string'
-  }"</span>
-  -H <span class="s2">"Authorization: &lt;Authorization key&gt;"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'vendor_name': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_address1': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_address2': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_zipcode': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_city': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_country': 'string', </span><span class="se">\</span><span class="s2">
+    'head_office_phone': 'string', </span><span class="se">\</span><span class="s2">
+    'description': 'string' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: &lt;Authorization key&gt;"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -590,16 +596,16 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/sites -d
-  <span class="s2">"{
-    'title': 'string',
-    'address': 'string',
-    'gps': {
-      'lat': 'float',
-      'lng': 'float'
-    }
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/sites -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'title': 'string', </span><span class="se">\</span><span class="s2">
+    'address': 'string', </span><span class="se">\</span><span class="s2">
+    'gps': { </span><span class="se">\</span><span class="s2">
+      'lat': 'float', </span><span class="se">\</span><span class="s2">
+      'lng': 'float' </span><span class="se">\</span><span class="s2">
+    } </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -666,19 +672,19 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/members -d
-  <span class="s2">"{
-    'phone': 'string',
-    'type': 'string',
-    'fname': 'string',
-    'lname': 'string',
-    'username': 'string',
-    'password': 'string',
-    'email': 'string',
-    'emailVerified': bool,
-    'status': 'string'
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/members -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'phone': 'string', </span><span class="se">\</span><span class="s2">
+    'type': 'string', </span><span class="se">\</span><span class="s2">
+    'fname': 'string', </span><span class="se">\</span><span class="s2">
+    'lname': 'string', </span><span class="se">\</span><span class="s2">
+    'username': 'string', </span><span class="se">\</span><span class="s2">
+    'password': 'string', </span><span class="se">\</span><span class="s2">
+    'email': 'string', </span><span class="se">\</span><span class="s2">
+    'emailVerified': bool, </span><span class="se">\</span><span class="s2">
+    'status': 'string' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -774,11 +780,11 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT https://api.xerts.io/sites/:id/admin -d
-  <span class="s2">"{
-    'adminId': 'string'
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/sites/:id/admin -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'adminId': 'string' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -842,15 +848,15 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST https://api.xerts.io/vendors/:id/offers -d
-  <span class="s2">"{
-    'title': 'string',
-    'description': 'string',
-    'style_bordercolor': 'string',
-    'style_backgroundcolor': 'string',
-    'feature_image': 'URL-String'
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST <span class="se">\ </span>https://api.xerts.io/vendors/:id/offers -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'title': 'string', </span><span class="se">\</span><span class="s2">
+    'description': 'string', </span><span class="se">\</span><span class="s2">
+    'style_bordercolor': 'string', </span><span class="se">\</span><span class="s2">
+    'style_backgroundcolor': 'string', </span><span class="se">\</span><span class="s2">
+    'feature_image': 'URL-String' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -938,15 +944,15 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT https://api.xerts.io/offers/:id/sites/rel/:siteId -d
-  <span class="s2">"{
-    'instance_cost': 0.12,
-    'instance_limit': 1000,
-    'instance_issues': 3,
-    'total_cost': 120.00,
-    'instance_expiary_date': '2017-05-26'
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/offers/:id/sites/rel/:siteId -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'instance_cost': 0.12, </span><span class="se">\</span><span class="s2">
+    'instance_limit': 1000, </span><span class="se">\</span><span class="s2">
+    'instance_issues': 3, </span><span class="se">\</span><span class="s2">
+    'total_cost': 120.00, </span><span class="se">\</span><span class="s2">
+    'instance_expiary_date': '2017-05-26' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1041,8 +1047,8 @@ vendor for.
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/sites/:siteId/coupons
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/sites/:siteId/coupons <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1105,8 +1111,8 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\ </span>https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1172,13 +1178,13 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/ -d
-  <span class="s2">"{
-    'id': 'xxxx-xxxx-xxxx-xxxxx',
-    'device_model': 'iPhone 6s',
-    'device_os': 'iOS 9.3'
-  }"</span>
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/ -d <span class="se">\</span>
+  <span class="s2">"{ </span><span class="se">\</span><span class="s2">
+    'id': 'xxxx-xxxx-xxxx-xxxxx', </span><span class="se">\</span><span class="s2">
+    'device_model': 'iPhone 6s', </span><span class="se">\</span><span class="s2">
+    'device_os': 'iOS 9.3' </span><span class="se">\</span><span class="s2">
+  }"</span> <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1236,8 +1242,8 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/:id
-  -H <span class="s2">"APIKey: '&lt;Insert API Key here&gt;'"</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/:id <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
