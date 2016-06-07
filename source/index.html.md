@@ -27,15 +27,19 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 [![User flow diagram](images/xerts-user-flow-07062016.png)](images/xerts-user-flow-07062016.png)
 
-## API Key
+## Authentication
 
-In order for your app to use the `api.xerts.io` endpoints, you must be issued an API Key first. Follow the steps below to obtain an API Key:
+Xerts API requests require a `API-Key`. To get an API-Key for Xerts, email xerts@xped.com.
 
-1. Sign up as a User
-2. Register a Vendorship (create a vendor)
-3. Go [here](https://api.xerts.io/app/add) to register an app
-4. Copy your API Key and lock it up.
-5. Use the API Key in your App and have fun.
+Include the API-Key in every request as a HTTP header.
+
+> Like so:
+
+```shell
+curl -X POST https://api.xerts.io/ \
+  -H "API-Key: '<Insert API Key here>'"
+```
+
 
 ###### Last updated: 7th June 2016
 
@@ -46,8 +50,8 @@ In order for your app to use the `api.xerts.io` endpoints, you must be issued an
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -102,15 +106,15 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 > Use this command to get every coupon for device:
 
 ```shell
-curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/coupons/site/all/device/:deviceId \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/coupons/site/:siteId/devices/:deviceId \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -181,18 +185,19 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members -d "{
-  'phone': 'string',
-  'type': 'string',
-  'fname': 'string',
-  'lname': 'string',
-  'username': 'string',
-  'password': 'string',
-  'email': 'string',
-  'emailVerified': bool,
-  'status': 'string'
-}"
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/members -d
+  "{ \
+    'phone': 'string', \
+    'type': 'string', \
+    'fname': 'string', \
+    'lname': 'string', \
+    'username': 'string', \
+    'password': 'string', \
+    'email': 'string', \
+    'emailVerified': bool, \
+    'status': 'string' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -235,8 +240,12 @@ This endpoint logs a user in.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members/login -d "{'email': 'string', 'password': 'string'}"
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/members/login -d \
+  "{ \
+    'email': 'string', \
+    'password': 'string'
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -268,18 +277,18 @@ password |Y       |String|N | users's password
 
 ```shell
 curl -X POST https://api.xerts.io/members/:id/vendors -d
-  "{
-    'vendor_name': 'string',
-    'head_office_address1': 'string',
-    'head_office_address2': 'string',
-    'head_office_zipcode': 'string',
-    'head_office_city': 'string',
-    'head_office_country': 'string',
-    'head_office_phone': 'string',
-    'description': 'string'
-  }"
-  -H "Authorization: <Authorization key>"
-  -H "APIKey: '<Insert API Key here>'"
+  "{ \
+    'vendor_name': 'string', \
+    'head_office_address1': 'string', \
+    'head_office_address2': 'string', \
+    'head_office_zipcode': 'string', \
+    'head_office_city': 'string', \
+    'head_office_country': 'string', \
+    'head_office_phone': 'string', \
+    'description': 'string' \
+  }" \
+  -H "Authorization: <Authorization key>" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -329,16 +338,16 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/vendors/:id/sites -d
-  "{
-    'title': 'string',
-    'address': 'string',
-    'gps': {
-      'lat': 'float',
-      'lng': 'float'
-    }
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/vendors/:id/sites -d \
+  "{ \
+    'title': 'string', \
+    'address': 'string', \
+    'gps': { \
+      'lat': 'float', \
+      'lng': 'float' \
+    } \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -379,19 +388,19 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/vendors/:id/members -d
-  "{
-    'phone': 'string',
-    'type': 'string',
-    'fname': 'string',
-    'lname': 'string',
-    'username': 'string',
-    'password': 'string',
-    'email': 'string',
-    'emailVerified': bool,
-    'status': 'string'
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/vendors/:id/members -d \
+  "{ \
+    'phone': 'string', \
+    'type': 'string', \
+    'fname': 'string', \
+    'lname': 'string', \
+    'username': 'string', \
+    'password': 'string', \
+    'email': 'string', \
+    'emailVerified': bool, \
+    'status': 'string' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -437,11 +446,11 @@ lname |N       |String|N |Last Name
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT https://api.xerts.io/sites/:id/admin -d
-  "{
-    'adminId': 'string'
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/sites/:id/admin -d \
+  "{ \
+    'adminId': 'string' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -485,15 +494,15 @@ adminId         |Y       |String|Y |The ID of the user you want to set as admin 
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X POST https://api.xerts.io/vendors/:id/offers -d
-  "{
-    'title': 'string',
-    'description': 'string',
-    'style_bordercolor': 'string',
-    'style_backgroundcolor': 'string',
-    'feature_image': 'URL-String'
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -H "Authorization: <ACCESS_TOKEN>" -X POST \ https://api.xerts.io/vendors/:id/offers -d \
+  "{ \
+    'title': 'string', \
+    'description': 'string', \
+    'style_bordercolor': 'string', \
+    'style_backgroundcolor': 'string', \
+    'feature_image': 'URL-String' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -537,15 +546,15 @@ vendorId         |Y       |String|N |Owning vendor ID
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT https://api.xerts.io/offers/:id/sites/rel/:siteId -d
-  "{
-    'instance_cost': 0.12,
-    'instance_limit': 1000,
-    'instance_issues': 3,
-    'total_cost': 120.00,
-    'instance_expiary_date': '2017-05-26'
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/offers/:id/sites/rel/:siteId -d \
+  "{ \
+    'instance_cost': 0.12, \
+    'instance_limit': 1000, \
+    'instance_issues': 3, \
+    'total_cost': 120.00, \
+    'instance_expiary_date': '2017-05-26' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -590,8 +599,8 @@ instance_expiary_date         |N       |String|N |Expiary date of offer at site
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST https://api.xerts.io/sites/:siteId/coupons
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/sites/:siteId/coupons \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -640,8 +649,8 @@ None.      |
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST \ https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above commands return JSON structured like this:
@@ -693,13 +702,13 @@ None.      |
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/device/ -d
-  "{
-    'id': 'xxxx-xxxx-xxxx-xxxxx',
-    'device_model': 'iPhone 6s',
-    'device_os': 'iOS 9.3'
-  }"
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/device/ -d \
+  "{ \
+    'id': 'xxxx-xxxx-xxxx-xxxxx', \
+    'device_model': 'iPhone 6s', \
+    'device_os': 'iOS 9.3' \
+  }" \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -731,8 +740,8 @@ device_os         |N       |String|N |The operating system and version number.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/device/:id
-  -H "APIKey: '<Insert API Key here>'"
+curl -X POST https://api.xerts.io/device/:id \
+  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
