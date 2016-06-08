@@ -183,6 +183,57 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 -----------|----------|------|----|-------------------------------
 None.      |
 
+## Redeem a coupon at a site for device
+
+> Use this command to get only site-specific coupons for device:
+
+```shell
+curl -X POST \ https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code \
+  -H "API-Key: '<Insert API Key here>'"
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": {
+    "id": 19,
+    "redeem_code": "B5Z7E",
+    "redeemed_date": "2016-05-30T03:14:18.000Z",
+    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
+    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
+  }
+}
+```
+
+> If the coupon is already redeemed, the following JSON response will boomerang:
+
+```json
+{
+  "error": {
+    "status": 404,
+    "message": "Coupon not found honey. Check if it's already been redeemed."
+  }
+}
+```
+
+This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
+If the coupon has already been redeemed, an error 404 will be returned.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
+
 # Management Endpoints
 
 ## Create a User
@@ -646,57 +697,6 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 ### HTTP Request
 
 `GET https://api.xerts.io/sites/:siteId/coupons`
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
------------|----------|------|----|-------------------------------
-None.      |
-
-## Redeem a coupon at a site for device
-
-> Use this command to get only site-specific coupons for device:
-
-```shell
-curl -X POST \ https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code \
-  -H "API-Key: '<Insert API Key here>'"
-```
-
-> The above commands return JSON structured like this:
-
-```json
-{
-  "results": {
-    "id": 19,
-    "redeem_code": "B5Z7E",
-    "redeemed_date": "2016-05-30T03:14:18.000Z",
-    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
-    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
-  }
-}
-```
-
-> If the coupon is already redeemed, the following JSON response will boomerang:
-
-```json
-{
-  "error": {
-    "status": 404,
-    "message": "Coupon not found honey. Check if it's already been redeemed."
-  }
-}
-```
-
-This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
-If the coupon has already been redeemed, an error 404 will be returned.
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
-
-### HTTP Request
-
-`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
 
 ### Body Parameters
 
