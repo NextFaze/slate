@@ -40,6 +40,15 @@ curl -X POST https://api.xerts.io/ \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
+> The above shell command returns the following response:
+
+```shell
+{
+  "started": "2016-06-07T09:02:35.527Z",
+  "uptime": 55190.337
+}
+```
+
 
 ###### Last updated: 7th June 2016
 
