@@ -116,7 +116,9 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h4 id="last-updated-15th-june-2016">Last updated: 15th June 2016</h4>
+
+<h1 id="introduction">Introduction</h1>
 
 <p>Welcome to the Xerts REST API.</p>
 
@@ -152,7 +154,47 @@
 <span class="o">}</span>
 </code></pre>
 
-<h6 id="last-updated-7th-june-2016">Last updated: 7th June 2016</h6>
+<h2 id="definitions">Definitions</h2>
+
+<table><thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Vendor</td>
+<td>The Advertising organisation who creates offers to be distributed as coupons at one or more sites.</td>
+</tr>
+<tr>
+<td>Offer</td>
+<td>A template created by a vendor that can be assigned to one or multiple sites for registration by Xerts POS users</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>An instance of an Offer which is allocated to a user&rsquo;s device</td>
+</tr>
+<tr>
+<td>Member</td>
+<td>A member is a user in the system. Can be one of &#39;admin&rsquo;, &#39;appProvider&rsquo;, &#39;siteOwner&rsquo;, &#39;vendorOwner&rsquo;.</td>
+</tr>
+<tr>
+<td>Site</td>
+<td>A physical location of an Xerts device - owners can have multiple sites.</td>
+</tr>
+<tr>
+<td>App Provider</td>
+<td>A user who provides an application (web/iOS/Android) to access the API with an API Key</td>
+</tr>
+<tr>
+<td>Site Owner</td>
+<td>A Client User who has one or multiple sites (physical sales locations).</td>
+</tr>
+<tr>
+<td>Vendor Owner</td>
+<td>A User that has control over a vendor organisation and it&rsquo;s offers.</td>
+</tr>
+</tbody></table>
 
 <h1 id="client-action-endpoints">Client Action Endpoints</h1>
 
@@ -382,7 +424,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'phone': 'string', </span><span class="se">\</span><span class="s2">
     'type': 'string', </span><span class="se">\</span><span class="s2">
@@ -392,7 +434,10 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
     'password': 'string', </span><span class="se">\</span><span class="s2">
     'email': 'string', </span><span class="se">\</span><span class="s2">
     'emailVerified': bool, </span><span class="se">\</span><span class="s2">
-    'status': 'string' </span><span class="se">\</span><span class="s2">
+    'status': 'string', </span><span class="se">\</span><span class="s2">
+    'appProvider': true, </span><span class="se">\</span><span class="s2">
+    'vendorOwner': false, </span><span class="se">\</span><span class="s2">
+    'siteOwner': false </span><span class="se">\</span><span class="s2">
   }"</span> <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
@@ -408,7 +453,8 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
   </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"appProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -492,7 +538,6 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
     'email': 'string', </span><span class="se">\</span><span class="s2">
     'password': 'string'
   }"</span> <span class="se">\</span>
-  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
@@ -1177,6 +1222,184 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <td></td>
 <td></td>
 <td></td>
+</tr>
+</tbody></table>
+
+<h1 id="reporting-endpoints">Reporting Endpoints</h1>
+
+<h2 id="get-coupon-reports-for-vendors">Get Coupon Reports for vendors</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/reporting/vendors/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
+  -H <span class="s2">"Authorization: '&lt;Insert Authorization here&gt;'"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sites"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"58c4fd10-31e5-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58c4fd10-31e5-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O\\'connel Street Bakery"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"68c5fd11-31e5-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68c5fd11-31e5-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main North Road On the Run"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"78d5fd14-31e6-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78d5fd14-31e6-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anzac Hwy On the Run"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28-07-2016"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-08-2016"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.xerts.io/reporting/vendors/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>vendor ID - unique identifier for the site</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from</td>
+<td>Y</td>
+<td>date from - the earliest date you want the range for</td>
+</tr>
+<tr>
+<td>to</td>
+<td>N</td>
+<td>date to - the latest date you want the range for</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-coupon-reports-for-a-site">Get coupon reports for a site</h2>
+
+<blockquote>
+<p>Use this command:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/reporting/sites/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
+  -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
+  -H <span class="s2">"Authorization: '&lt;Insert Authorization here&gt;'"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vendors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"48c4fd10-31e5-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48c4fd10-31e5-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dymocks Books"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"48c5fd11-31e5-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48c5fd11-31e5-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mayhem Fireworks Co."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"48d5fd14-31e6-11e6-n0a9-d3c289387tga"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48d5fd14-31e6-11e6-n0a9-d3c289387tga"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazing Harry\'s Delicious Candy"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active_offers"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_issued"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"coupons_redeemed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28-07-2016"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-08-2016"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint gets all vendor coupons issued and redeemed for a site between two dates. If the <code class="prettyprint">to</code> query parameter is not provided, system will give all stats up to now.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.xerts.io/reporting/sites/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
+
+<h3 id="body-parameters">Body Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>String</td>
+<td>Y</td>
+<td>site ID - unique identifier for the site</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Query</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from</td>
+<td>Y</td>
+<td>date from - the earliest date you want the range for</td>
+</tr>
+<tr>
+<td>to</td>
+<td>N</td>
+<td>date to - the latest date you want the range for</td>
 </tr>
 </tbody></table>
 
