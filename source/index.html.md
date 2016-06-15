@@ -12,7 +12,7 @@ includes:
 
 search: true
 ---
-
+#### Last updated: 15th June 2016
 # Introduction
 
 Welcome to the Xerts REST API.
@@ -49,8 +49,19 @@ curl -X POST https://api.xerts.io/ \
 }
 ```
 
+## Definitions
 
-###### Last updated: 7th June 2016
+Term               | Meaning
+-------------------|------------------------------------------
+Vendor             | The Advertising organisation who creates offers to be distributed as coupons at one or more sites.
+Offer              | A template created by a vendor that can be assigned to one or multiple sites for registration by Xerts POS users
+Coupon             | An instance of an Offer which is allocated to a user's device
+Member             | A member is a user in the system. Can be one of 'admin', 'appProvider', 'siteOwner', 'vendorOwner'.
+Site               | A physical location of an Xerts device - owners can have multiple sites.
+App Provider       | A user who provides an application (web/iOS/Android) to access the API with an API Key
+Site Owner         | A Client User who has one or multiple sites (physical sales locations).
+Vendor Owner       | A User that has control over a vendor organisation and it's offers.
+
 
 # Client Action Endpoints
 
@@ -245,7 +256,7 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members -d
+curl -X POST https://api.xerts.io/members -d \
   "{ \
     'phone': 'string', \
     'type': 'string', \
@@ -255,7 +266,10 @@ curl -X POST https://api.xerts.io/members -d
     'password': 'string', \
     'email': 'string', \
     'emailVerified': bool, \
-    'status': 'string' \
+    'status': 'string', \
+    'appProvider': true, \
+    'vendorOwner': false, \
+    'siteOwner': false \
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -271,7 +285,8 @@ curl -X POST https://api.xerts.io/members -d
   "lname": "Blue",
   "username": "mblurulez",
   "email": "bluezey@gmail.com",
-  "status": "active"
+  "status": "active",
+  "appProvider": "true"
 }
 ```
 
@@ -305,7 +320,6 @@ curl -X POST https://api.xerts.io/members/login -d \
     'email': 'string', \
     'password': 'string'
   }" \
-  -H "API-Key: '<Insert API Key here>'"
 ```
 
 > The above command returns JSON structured like this:
@@ -703,6 +717,129 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
  Parameter | Required | Type | ID | Description
 -----------|----------|------|----|-------------------------------
 None.      |
+
+# Reporting Endpoints
+
+## Get Coupon Reports for vendors
+
+> Use this command:
+
+```shell
+curl -X GET https://api.xerts.io/reporting/vendors/:id?from=28-07-2016&to=14-08-2016 \
+  -H "API-Key: '<Insert API Key here>'"
+  -H "Authorization: '<Insert Authorization here>'"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+	"total_coupons_issued": 30,
+	"total_coupons_redeemed": 10,
+	"sites": [
+		"58c4fd10-31e5-11e6-n0a9-d3c289387tga" : {
+      "id": "58c4fd10-31e5-11e6-n0a9-d3c289387tga",
+			"label": "O\\'connel Street Bakery",
+			"active_offers": 1,
+			"coupons_issued": 15,
+			"coupons_redeemed": 2
+		},
+		"68c5fd11-31e5-11e6-n0a9-d3c289387tga" : {
+      "id": "68c5fd11-31e5-11e6-n0a9-d3c289387tga",
+			"label": "Main North Road On the Run",
+			"active_offers": 1,
+			"coupons_issued": 10,
+			"coupons_redeemed": 5
+		},
+		"78d5fd14-31e6-11e6-n0a9-d3c289387tga" : {
+      "id": "78d5fd14-31e6-11e6-n0a9-d3c289387tga",
+			"label": "Anzac Hwy On the Run",
+			"active_offers": 1,
+			"coupons_issued": 5,
+			"coupons_redeemed": 1
+    }
+	],
+	"from": "28-07-2016",
+	"to": "14-08-2016"
+}
+```
+
+### HTTP Request
+
+`GET https://api.xerts.io/reporting/vendors/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
+
+### Body Parameters
+
+Parameter | Required | Type  | ID  | Description
+-----------|----------|-------|-----|-------------------------------
+id        | Y        | String| Y   | vendor ID - unique identifier for the site
+
+Query | Required | Description
+-------|----------|-------------------------------
+from  |Y         |date from - the earliest date you want the range for
+to    |N         |date to - the latest date you want the range for
+
+## Get coupon reports for a site
+
+> Use this command:
+
+```shell
+curl -X GET https://api.xerts.io/reporting/sites/:id?from=28-07-2016&to=14-08-2016 \
+  -H "API-Key: '<Insert API Key here>'"
+  -H "Authorization: '<Insert Authorization here>'"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+	"total_coupons_issued": 30,
+	"total_coupons_redeemed": 10,
+	"vendors": [
+		"48c4fd10-31e5-11e6-n0a9-d3c289387tga" : {
+      "id": "48c4fd10-31e5-11e6-n0a9-d3c289387tga",
+			"label": "Dymocks Books",
+			"active_offers": 2,
+			"coupons_issued": 15,
+			"coupons_redeemed": 2
+		},
+		"48c5fd11-31e5-11e6-n0a9-d3c289387tga" : {
+      "id": "48c5fd11-31e5-11e6-n0a9-d3c289387tga",
+			"label": "Mayhem Fireworks Co.",
+			"active_offers": 1,
+			"coupons_issued": 10,
+			"coupons_redeemed": 5
+		},
+		"48d5fd14-31e6-11e6-n0a9-d3c289387tga" : {
+      "id": "48d5fd14-31e6-11e6-n0a9-d3c289387tga",
+			"label": "Amazing Harry\'s Delicious Candy",
+			"active_offers": 3,
+			"coupons_issued": 5,
+			"coupons_redeemed": 1
+    }
+	],
+	"from": "28-07-2016",
+	"to": "14-08-2016"
+}
+```
+
+This endpoint gets all vendor coupons issued and redeemed for a site between two dates. If the `to` query parameter is not provided, system will give all stats up to now.
+
+### HTTP Request
+
+`GET https://api.xerts.io/reporting/sites/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
+
+### Body Parameters
+
+ Parameter | Required | Type  | ID  | Description
+-----------|----------|-------|-----|-------------------------------
+ id        | Y        | String| Y   | site ID - unique identifier for the site
+
+ Query | Required | Description
+-------|----------|-------------------------------
+ from  |Y         |date from - the earliest date you want the range for
+ to    |N         |date to - the latest date you want the range for
+
 
 # Debug (developers)
 
