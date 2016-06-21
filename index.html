@@ -110,7 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='https://api.xerts.io/'>Get an API Key</a></li>
+            <li><a href='https://api.xerts.io/api/'>Get an API Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -141,7 +141,7 @@
 <blockquote>
 <p>Like so:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/ <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/ <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -203,7 +203,7 @@
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -246,7 +246,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -266,14 +266,14 @@
 <blockquote>
 <p>Use this command to get every coupon for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/coupons/site/all/device/:deviceId <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/api/coupons/site/all/device/:deviceId <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/coupons/site/:siteId/devices/:deviceId <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -324,9 +324,9 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/all/devices/:deviceId</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/coupons/sites/all/devices/:deviceId</code></p>
 
-<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -353,7 +353,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="se">\ </span>https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\ </span>https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -391,7 +391,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -424,10 +424,9 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/members -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'phone': 'string', </span><span class="se">\</span><span class="s2">
-    'type': 'string', </span><span class="se">\</span><span class="s2">
     'fname': 'string', </span><span class="se">\</span><span class="s2">
     'lname': 'string', </span><span class="se">\</span><span class="s2">
     'username': 'string', </span><span class="se">\</span><span class="s2">
@@ -448,13 +447,14 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023584620"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micky"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"appProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+  </span><span class="nt">"appProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vendorOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"siteOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -462,7 +462,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/members</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/members</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -504,11 +504,25 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <td>User contact Phone</td>
 </tr>
 <tr>
-<td>type</td>
-<td>Y</td>
+<td>vendorOwner</td>
+<td>N</td>
 <td>String</td>
 <td>N</td>
-<td>Type can be: [vendor_admin, site_admin]</td>
+<td>user type is vendor owner - can create new vendors</td>
+</tr>
+<tr>
+<td>siteOwner</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>user type is site owner - can create sites and manage them</td>
+</tr>
+<tr>
+<td>appProvider</td>
+<td>N</td>
+<td>String</td>
+<td>N</td>
+<td>usually an organisation developing an app for 3rd party - appProviders receive API Keys that allow their &#39;App&rsquo; to access teh API.</td>
 </tr>
 <tr>
 <td>fname</td>
@@ -533,7 +547,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/login -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/members/login -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'email': 'string', </span><span class="se">\</span><span class="s2">
     'password': 'string'
@@ -557,7 +571,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/members/login</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/members/login</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -591,7 +605,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/members/:id/vendors -d
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/members/:id/vendors -d
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'vendor_name': 'string', </span><span class="se">\</span><span class="s2">
     'head_office_address1': 'string', </span><span class="se">\</span><span class="s2">
@@ -627,7 +641,7 @@ Post parameters in JSON format in the body of the request: `{ username: &hellip;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/members/:id/vendors</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/members/:id/vendors</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -715,7 +729,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/sites -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/vendors/:id/sites -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'title': 'string', </span><span class="se">\</span><span class="s2">
     'address': 'string', </span><span class="se">\</span><span class="s2">
@@ -745,7 +759,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/vendors/:id/sites</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/vendors/:id/sites</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -791,17 +805,17 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/vendors/:id/members -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/vendors/:id/members -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'phone': 'string', </span><span class="se">\</span><span class="s2">
-    'type': 'string', </span><span class="se">\</span><span class="s2">
     'fname': 'string', </span><span class="se">\</span><span class="s2">
     'lname': 'string', </span><span class="se">\</span><span class="s2">
     'username': 'string', </span><span class="se">\</span><span class="s2">
     'password': 'string', </span><span class="se">\</span><span class="s2">
     'email': 'string', </span><span class="se">\</span><span class="s2">
     'emailVerified': bool, </span><span class="se">\</span><span class="s2">
-    'status': 'string' </span><span class="se">\</span><span class="s2">
+    'status': 'string', </span><span class="se">\</span><span class="s2">
+    'vendorOwner': true
   }"</span> <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
@@ -812,12 +826,12 @@ vendor for.
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d426a9c0-22fe-11e6-96a3-bdf7343ebeee"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"023584620"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micky"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mblurulez"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bluezey@gmail.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vendorOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -825,7 +839,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/vendors/:id/members</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/vendors/:id/members</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -872,11 +886,11 @@ vendor for.
 <td>User contact Phone</td>
 </tr>
 <tr>
-<td>type</td>
-<td>Y</td>
+<td>vendorOwner</td>
+<td>N</td>
 <td>String</td>
 <td>N</td>
-<td>Type can be: [vendor_admin, site_admin]</td>
+<td>flag for user being a vendor owner</td>
 </tr>
 <tr>
 <td>fname</td>
@@ -899,7 +913,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/sites/:id/admin -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/api/sites/:id/admin -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'adminId': 'string' </span><span class="se">\</span><span class="s2">
   }"</span> <span class="se">\</span>
@@ -928,7 +942,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/sites/:id/admin</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/sites/:id/admin</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -967,7 +981,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST <span class="se">\ </span>https://api.xerts.io/vendors/:id/offers -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X POST <span class="se">\ </span>https://api.xerts.io/api/vendors/:id/offers -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'title': 'string', </span><span class="se">\</span><span class="s2">
     'description': 'string', </span><span class="se">\</span><span class="s2">
@@ -996,7 +1010,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/vendor/:id/offers</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/vendor/:id/offers</code></p>
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -1063,7 +1077,7 @@ vendor for.
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/offers/:id/sites/rel/:siteId -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Authorization: &lt;ACCESS_TOKEN&gt;"</span> -X PUT <span class="se">\ </span>https://api.xerts.io/api/offers/:id/sites/rel/:siteId -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'instance_cost': 0.12, </span><span class="se">\</span><span class="s2">
     'instance_limit': 1000, </span><span class="se">\</span><span class="s2">
@@ -1093,7 +1107,7 @@ vendor for.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.xerts.io/offers/:id/sites/rel/:siteId</code></p>
+<p><code class="prettyprint">PUT https://api.xerts.io/api/offers/:id/sites/rel/:siteId</code></p>
 
 <aside class="notice">
 `id` and `siteId` are always a GUID.
@@ -1166,7 +1180,7 @@ vendor for.
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/sites/:siteId/coupons <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/sites/:siteId/coupons <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -1203,7 +1217,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/sites/:siteId/coupons</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/sites/:siteId/coupons</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1232,7 +1246,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/reporting/vendors/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/api/reporting/vendors/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
   -H <span class="s2">"Authorization: '&lt;Insert Authorization here&gt;'"</span>
 </code></pre>
@@ -1273,7 +1287,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/reporting/vendors/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/reporting/vendors/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1319,7 +1333,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/reporting/sites/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X GET https://api.xerts.io/api/reporting/sites/:id?from<span class="o">=</span>28-07-2016&amp;to<span class="o">=</span>14-08-2016 <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
   -H <span class="s2">"Authorization: '&lt;Insert Authorization here&gt;'"</span>
 </code></pre>
@@ -1362,7 +1376,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/reporting/sites/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
+<p><code class="prettyprint">GET https://api.xerts.io/api/reporting/sites/:id?from=dd-mm-yyyy&amp;to=dd-mm-yyyy</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1410,7 +1424,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/ -d <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/device/ -d <span class="se">\</span>
   <span class="s2">"{ </span><span class="se">\</span><span class="s2">
     'id': 'xxxx-xxxx-xxxx-xxxxx', </span><span class="se">\</span><span class="s2">
     'device_model': 'iPhone 6s', </span><span class="se">\</span><span class="s2">
@@ -1433,7 +1447,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/devices</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/devices</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
@@ -1474,7 +1488,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/device/:id <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST https://api.xerts.io/api/device/:id <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -1490,7 +1504,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.xerts.io/devices/:id</code></p>
+<p><code class="prettyprint">POST https://api.xerts.io/api/devices/:id</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
