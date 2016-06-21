@@ -27,6 +27,12 @@ Staff at the site can manually redeem the coupon with an interface behind the co
 
 [![User flow diagram](images/xerts-user-flow-07062016.png)](images/xerts-user-flow-07062016.png)
 
+## Data model
+
+The following provides an example of the way the various data objects are related in the Xerts API:
+
+[![Data Model Diagram](images/xerts-api-data-model.png)](images/xerts-api-data-model.png)
+
 ## Authentication
 
 Xerts API requests require a `API-Key`. To get an API-Key for Xerts, email xerts@xped.com.
