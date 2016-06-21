@@ -205,7 +205,7 @@ None.      |
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST \ https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code \
+curl -X PUT \ https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -243,7 +243,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+`PUT https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
 
 ### Body Parameters
 
