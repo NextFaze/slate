@@ -5,7 +5,7 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='https://api.xerts.io/'>Get an API Key</a>
+  - <a href='https://api.xerts.io/api/'>Get an API Key</a>
 
 includes:
   - errors
@@ -36,7 +36,7 @@ Include the API-Key in every request as a HTTP header.
 > Like so:
 
 ```shell
-curl -X POST https://api.xerts.io/ \
+curl -X POST https://api.xerts.io/api/ \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -70,7 +70,7 @@ Vendor Owner       | A User that has control over a vendor organisation and it's
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId \
+curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -113,7 +113,7 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 
 ### HTTP Request
 
-`POST https://api.xerts.io/siteOffers/:siteId/device/:deviceId`
+`POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId`
 
 ### Body Parameters
 
@@ -126,14 +126,14 @@ This generates coupons for a device at a specific site. Use `:siteId` for the Si
 > Use this command to get every coupon for device:
 
 ```shell
-curl -X GET https://api.xerts.io/coupons/site/all/device/:deviceId \
+curl -X GET https://api.xerts.io/api/coupons/site/all/device/:deviceId \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X GET https://api.xerts.io/coupons/site/:siteId/devices/:deviceId \
+curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -184,9 +184,9 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET https://api.xerts.io/coupons/sites/all/devices/:deviceId`
+`GET https://api.xerts.io/api/coupons/sites/all/devices/:deviceId`
 
-`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId`
+`GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId`
 
 ### Body Parameters
 
@@ -199,7 +199,7 @@ None.      |
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST \ https://api.xerts.io/coupons/sites/:siteId/device/:deviceId/redeem/:code \
+curl -X POST \ https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -237,7 +237,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET https://api.xerts.io/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+`GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
 
 ### Body Parameters
 
@@ -256,7 +256,7 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members -d \
+curl -X POST https://api.xerts.io/api/members -d \
   "{ \
     'phone': 'string', \
     'type': 'string', \
@@ -294,7 +294,7 @@ This endpoint creates a user.
 
 ### HTTP Request
 
-`POST https://api.xerts.io/members`
+`POST https://api.xerts.io/api/members`
 
 ### Body Parameters
 
@@ -315,7 +315,7 @@ This endpoint logs a user in.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members/login -d \
+curl -X POST https://api.xerts.io/api/members/login -d \
   "{ \
     'email': 'string', \
     'password': 'string'
@@ -336,7 +336,7 @@ curl -X POST https://api.xerts.io/members/login -d \
 
 ### HTTP Request
 
-`POST https://api.xerts.io/members/login`
+`POST https://api.xerts.io/api/members/login`
 
 ### Body Parameters
 
@@ -350,7 +350,7 @@ password |Y       |String|N | users's password
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/members/:id/vendors -d
+curl -X POST https://api.xerts.io/api/members/:id/vendors -d
   "{ \
     'vendor_name': 'string', \
     'head_office_address1': 'string', \
@@ -386,7 +386,7 @@ This endpoint creates a vendor for user.
 
 ### HTTP Request
 
-`POST https://api.xerts.io/members/:id/vendors`
+`POST https://api.xerts.io/api/members/:id/vendors`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -412,7 +412,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/vendors/:id/sites -d \
+curl -X POST https://api.xerts.io/api/vendors/:id/sites -d \
   "{ \
     'title': 'string', \
     'address': 'string', \
@@ -442,7 +442,7 @@ This endpoint creates a site for a vendor.
 
 ### HTTP Request
 
-`POST https://api.xerts.io/vendors/:id/sites`
+`POST https://api.xerts.io/api/vendors/:id/sites`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -462,7 +462,7 @@ vendor for.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/vendors/:id/members -d \
+curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
   "{ \
     'phone': 'string', \
     'type': 'string', \
@@ -496,7 +496,7 @@ This endpoint creates a user that is owned by a vendor. This user can be assigne
 
 ### HTTP Request
 
-`POST https://api.xerts.io/vendors/:id/members`
+`POST https://api.xerts.io/api/vendors/:id/members`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -520,7 +520,7 @@ lname |N       |String|N |Last Name
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/sites/:id/admin -d \
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/sites/:id/admin -d \
   "{ \
     'adminId': 'string' \
   }" \
@@ -549,7 +549,7 @@ This endpoint adds a user to a site. User must be owned by the vendor that owns 
 
 ### HTTP Request
 
-`POST https://api.xerts.io/sites/:id/admin`
+`POST https://api.xerts.io/api/sites/:id/admin`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -568,7 +568,7 @@ adminId         |Y       |String|Y |The ID of the user you want to set as admin 
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X POST \ https://api.xerts.io/vendors/:id/offers -d \
+curl -H "Authorization: <ACCESS_TOKEN>" -X POST \ https://api.xerts.io/api/vendors/:id/offers -d \
   "{ \
     'title': 'string', \
     'description': 'string', \
@@ -597,7 +597,7 @@ This endpoint adds an offer for a vendor. Vendor must be owned by logged in user
 
 ### HTTP Request
 
-`POST https://api.xerts.io/vendor/:id/offers`
+`POST https://api.xerts.io/api/vendor/:id/offers`
 
 <aside class="notice">
 `id` is always a GUID. Replace this with the member with `id` you are creating a
@@ -620,7 +620,7 @@ vendorId         |Y       |String|N |Owning vendor ID
 > Use this command:
 
 ```shell
-curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/offers/:id/sites/rel/:siteId -d \
+curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/offers/:id/sites/rel/:siteId -d \
   "{ \
     'instance_cost': 0.12, \
     'instance_limit': 1000, \
@@ -650,7 +650,7 @@ This endpoint assigns an offer to a site. If an offer is assigned to a site, cli
 
 ### HTTP Request
 
-`PUT https://api.xerts.io/offers/:id/sites/rel/:siteId`
+`PUT https://api.xerts.io/api/offers/:id/sites/rel/:siteId`
 
 <aside class="notice">
 `id` and `siteId` are always a GUID.
@@ -673,7 +673,7 @@ instance_expiary_date         |N       |String|N |Expiary date of offer at site
 > Use this command to get only site-specific coupons for device:
 
 ```shell
-curl -X POST https://api.xerts.io/sites/:siteId/coupons \
+curl -X POST https://api.xerts.io/api/sites/:siteId/coupons \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -710,7 +710,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 ### HTTP Request
 
-`GET https://api.xerts.io/sites/:siteId/coupons`
+`GET https://api.xerts.io/api/sites/:siteId/coupons`
 
 ### Body Parameters
 
@@ -725,7 +725,7 @@ None.      |
 > Use this command:
 
 ```shell
-curl -X GET https://api.xerts.io/reporting/vendors/:id?from=28-07-2016&to=14-08-2016 \
+curl -X GET https://api.xerts.io/api/reporting/vendors/:id?from=28-07-2016&to=14-08-2016 \
   -H "API-Key: '<Insert API Key here>'"
   -H "Authorization: '<Insert Authorization here>'"
 ```
@@ -766,7 +766,7 @@ curl -X GET https://api.xerts.io/reporting/vendors/:id?from=28-07-2016&to=14-08-
 
 ### HTTP Request
 
-`GET https://api.xerts.io/reporting/vendors/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
+`GET https://api.xerts.io/api/reporting/vendors/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
 
 ### Body Parameters
 
@@ -784,7 +784,7 @@ to    |N         |date to - the latest date you want the range for
 > Use this command:
 
 ```shell
-curl -X GET https://api.xerts.io/reporting/sites/:id?from=28-07-2016&to=14-08-2016 \
+curl -X GET https://api.xerts.io/api/reporting/sites/:id?from=28-07-2016&to=14-08-2016 \
   -H "API-Key: '<Insert API Key here>'"
   -H "Authorization: '<Insert Authorization here>'"
 ```
@@ -827,7 +827,7 @@ This endpoint gets all vendor coupons issued and redeemed for a site between two
 
 ### HTTP Request
 
-`GET https://api.xerts.io/reporting/sites/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
+`GET https://api.xerts.io/api/reporting/sites/:id?from=dd-mm-yyyy&to=dd-mm-yyyy`
 
 ### Body Parameters
 
@@ -848,7 +848,7 @@ This endpoint gets all vendor coupons issued and redeemed for a site between two
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/device/ -d \
+curl -X POST https://api.xerts.io/api/device/ -d \
   "{ \
     'id': 'xxxx-xxxx-xxxx-xxxxx', \
     'device_model': 'iPhone 6s', \
@@ -871,7 +871,7 @@ This endpoint creates a client device in the system. At this time there are no u
 
 ### HTTP Request
 
-`POST https://api.xerts.io/devices`
+`POST https://api.xerts.io/api/devices`
 
 ### Body Parameters
 
@@ -886,7 +886,7 @@ device_os         |N       |String|N |The operating system and version number.
 > Use this command:
 
 ```shell
-curl -X POST https://api.xerts.io/device/:id \
+curl -X POST https://api.xerts.io/api/device/:id \
   -H "API-Key: '<Insert API Key here>'"
 ```
 
@@ -902,7 +902,7 @@ This endpoint checks if a device exists.
 
 ### HTTP Request
 
-`POST https://api.xerts.io/devices/:id`
+`POST https://api.xerts.io/api/devices/:id`
 
 ### Body Parameters
 
