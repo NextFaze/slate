@@ -359,7 +359,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 <blockquote>
 <p>Use this command to get only site-specific coupons for device:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="se">\ </span>https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="se">\ </span>https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
@@ -397,7 +397,7 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
+<p><code class="prettyprint">PUT https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code</code></p>
 
 <h3 id="body-parameters">Body Parameters</h3>
 
