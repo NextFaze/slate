@@ -259,7 +259,6 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 curl -X POST https://api.xerts.io/api/members -d \
   "{ \
     'phone': 'string', \
-    'type': 'string', \
     'fname': 'string', \
     'lname': 'string', \
     'username': 'string', \
@@ -280,13 +279,14 @@ curl -X POST https://api.xerts.io/api/members -d \
 {
   "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
   "phone": "023584620",
-  "type": "owner",
   "fname": "Micky",
   "lname": "Blue",
   "username": "mblurulez",
   "email": "bluezey@gmail.com",
   "status": "active",
-  "appProvider": "true"
+  "appProvider": true,
+  "vendorOwner": false,
+  "siteOwner": false
 }
 ```
 
@@ -304,7 +304,9 @@ username         |N       |String|N |Conforms to User model
 email |Y       |String|N |Conforms to User model                    
 password |Y       |String|N |Conforms to User model                   
 phone |N       |String|N |User contact Phone                    
-type |Y       |String|N |Type can be: [vendor_admin, site_admin]                               
+vendorOwner |N       |String|N |user type is vendor owner - can create new vendors
+siteOwner |N       |String|N |user type is site owner - can create sites and manage them
+appProvider |N       |String|N |usually an organisation developing an app for 3rd party - appProviders receive API Keys that allow their 'App' to access teh API.
 fname |N       |String|N |First Name                               
 lname |N       |String|N |Last Name                               
 
@@ -465,14 +467,14 @@ vendor for.
 curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
   "{ \
     'phone': 'string', \
-    'type': 'string', \
     'fname': 'string', \
     'lname': 'string', \
     'username': 'string', \
     'password': 'string', \
     'email': 'string', \
     'emailVerified': bool, \
-    'status': 'string' \
+    'status': 'string', \
+    'vendorOwner': true
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -483,12 +485,12 @@ curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
 {
   "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
   "phone": "023584620",
-  "type": "owner",
   "fname": "Micky",
   "lname": "Blue",
   "username": "mblurulez",
   "email": "bluezey@gmail.com",
-  "status": "active"
+  "status": "active",
+  "vendorOwner": true
 }
 ```
 
@@ -511,7 +513,7 @@ username         |N       |String|N |Conforms to User model
 email |Y       |String|N |Conforms to User model                    
 password |Y       |String|N |Conforms to User model                   
 phone |N       |String|N |User contact Phone                    
-type |Y       |String|N |Type can be: [vendor_admin, site_admin]                               
+vendorOwner |N       |String|N |flag for user being a vendor owner                              
 fname |N       |String|N |First Name                               
 lname |N       |String|N |Last Name  
 
