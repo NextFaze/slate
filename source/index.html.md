@@ -634,7 +634,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/offers
     'instance_limit': 1000, \
     'instance_issues': 3, \
     'total_cost': 120.00, \
-    'instance_expiary_date': '2017-05-26' \
+    'instance_expiry_date': '2017-05-26' \
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -648,7 +648,7 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/offers
   "instance_limit": 1010,
   "instance_issues": 1,
   "total_cost": 121.19999999999999,
-  "instance_expiary_date": "2017-05-26",
+  "instance_expiry_date": "2017-05-26",
   "offerId": "748d1960-22e8-11e6-953c-b1e050c9762d",
   "siteId": "74651f00-22e8-11e6-953c-b1e050c9762d"
 }
@@ -674,7 +674,7 @@ instance_issues         |Y       |String|N |Number of coupons been issued
 total_cost         |Y       |String|N |Total cost of campaign, given instance_cost and instance_limit
 instance_start_issue_date         |N       |String|N |Time of first coupon issue
 instance_last_issue_date         |N       |String|N |Last time a coupon was issued
-instance_expiary_date         |N       |String|N |Expiary date of offer at site
+instance_expiry_date         |N       |String|N |expiry date of offer at site
 
 ## Get all coupons for a Site
 
