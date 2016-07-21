@@ -293,27 +293,26 @@
 
 <h3 id="chaining-triggers">Chaining triggers</h3>
 
-<p>Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. The array of triggers returned by the server would look like:</p>
+<p>Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. </p>
 
 <blockquote>
-<p>A sequence of triggers for a coupon that activates two hours after a user visits a location would look like this:
-<code class="prettyprint">json
-[
-  {
-    &quot;id&quot;: &quot;1234&quot;,
-    &quot;triggerLocation&quot;: {
-      &quot;lat&quot;: 37,
-      &quot;lng&quot;: 20 
-    },
-    &quot;triggerRadius&quot;: 30
-  },
-  {
-    &quot;id&quot;: &quot;4567&quot;,
-    &quot;timeAfterTrigger&quot;: 120
-  }
-]
-</code></p>
+<p>A sequence of triggers for a coupon that activates two hours after a user visits a location would look like this:</p>
 </blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"triggerLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"triggerRadius"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timeAfterTrigger"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <h1 id="client-action-endpoints">Client Action Endpoints</h1>
 
