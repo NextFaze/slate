@@ -465,63 +465,7 @@ vendor for.
  address|N       |String|N |If an address is available, add it here
  gps    |N       |String|N |If GPS position is available, add it here { lat: 'float', long: 'float' }
 
-## Create a User owned by a Vendor
 
-> Use this command:
-
-```shell
-curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
-  "{ \
-    'phone': 'string', \
-    'firstName': 'string', \
-    'lastName': 'string', \
-    'username': 'string', \
-    'password': 'string', \
-    'email': 'string', \
-    'emailVerified': bool, \
-    'status': 'string', \
-    'vendorOwner': true
-  }" \
-  -H "API-Key: '<Insert API Key here>'"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
-  "phone": "023584620",
-  "firstName": "Micky",
-  "lastName": "Blue",
-  "username": "mblurulez",
-  "email": "bluezey@gmail.com",
-  "status": "active",
-  "vendorOwner": true
-}
-```
-
-This endpoint creates a user that is owned by a vendor. This user can be assigned as admin of one of the vendor's sites, or as a vendor owner.
-
-### HTTP Request
-
-`POST https://api.xerts.io/api/vendors/:id/members`
-
-<aside class="notice">
-`id` is always a GUID. Replace this with the member with `id` you are creating a
-vendor for.
-</aside>
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
-----------|----------|------|----|-------------------------------
-username         |N       |String|N |Conforms to User model              
-email |Y       |String|N |Conforms to User model                    
-password |Y       |String|N |Conforms to User model                   
-phone |N       |String|N |User contact Phone                    
-vendorOwner |N       |String|N |flag for user being a vendor owner                              
-firstName |N       |String|N |First Name                               
-lastName |N       |String|N |Last Name  
 
 ## Add a Site Admin
 
