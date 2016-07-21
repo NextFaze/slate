@@ -112,9 +112,10 @@ firesAfter            | object     | ?
 ```
 
 ### Chaining triggers
-Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. The array of triggers returned by the server would look like:
+Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. 
 
 > A sequence of triggers for a coupon that activates two hours after a user visits a location would look like this:
+
 ```json
 [
   {
