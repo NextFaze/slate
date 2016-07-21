@@ -12,7 +12,7 @@ includes:
 
 search: true
 ---
-#### Last updated: 15th June 2016
+#### Last updated: 21 July 2016
 # Introduction
 
 Welcome to the Xerts REST API.
@@ -48,7 +48,7 @@ curl -X POST https://api.xerts.io/api/ \
 
 > The above shell command returns the following response:
 
-```shell
+```json
 {
   "started": "2016-06-07T09:02:35.527Z",
   "uptime": 55190.337
@@ -87,16 +87,16 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
   "results": [
     {
       "id": "9e6c7f20-27a0-11e6-82bf-27ccd35b24dd",
-      "redeem_code": "Q70Q7",
+      "redeemCode": "Q70Q7",
       "deviceId": "89611c2c-f016-4e3b-8078-6abe40550552",
       "siteOfferId": "748ec710-22e8-11e6-953c-b1e050c9762d",
       "offer": {
         "id": "748d1960-22e8-11e6-953c-b1e050c9762d",
         "title": "Port Francis",
         "description": "Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non.",
-        "style_bordercolor": "grey",
-        "style_backgroundcolor": "salmon",
-        "feature_image": "http://lorempixel.com/720/300/",
+        "styleBorderColor": "grey",
+        "styleBackgroundColor": "salmon",
+        "featureImage": "http://lorempixel.com/720/300/",
         "vendorId": "7461eab0-22e8-11e6-953c-b1e050c9762d"
       }
     }
@@ -150,31 +150,31 @@ curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId \
   "results": [
     {
       "id": 10,
-      "redeem_code": "9CJBG",
+      "redeemCode": "9CJBG",
       "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
       "siteOfferId": "d634c6d0-25ff-11e6-b75e-7bf1c637b078",
       "offer": {
         "id": "d62fe4d0-25ff-11e6-b75e-7bf1c637b078",
         "title": "Port Hal",
         "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
-        "style_bordercolor": "sky blue",
-        "style_backgroundcolor": "magenta",
-        "feature_image": "http://lorempixel.com/720/300/",
+        "styleBorderColor": "sky blue",
+        "styleBackgroundColor": "magenta",
+        "featureImage": "http://lorempixel.com/720/300/",
         "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
       }
     },
     {
       "id": 11,
-      "redeem_code": "AO5XW",
+      "redeemCode": "AO5XW",
       "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
       "siteOfferId": "6ead4970-25fe-11e6-9f99-1520fe63256a",
       "offer": {
         "id": "6eab9bc0-25fe-11e6-9f99-1520fe63256a",
         "title": "Millershire",
         "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
-        "style_bordercolor": "maroon",
-        "style_backgroundcolor": "lime",
-        "feature_image": "http://lorempixel.com/720/300/",
+        "styleBorderColor": "maroon",
+        "styleBackgroundColor": "lime",
+        "featureImage": "http://lorempixel.com/720/300/",
         "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
       }
     }
@@ -215,8 +215,8 @@ curl -X PUT \ https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/re
 {
   "results": {
     "id": 19,
-    "redeem_code": "B5Z7E",
-    "redeemed_date": "2016-05-30T03:14:18.000Z",
+    "redeemCode": "B5Z7E",
+    "redeemedOn": "2016-05-30T03:14:18.000Z",
     "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
     "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
   }
@@ -265,8 +265,8 @@ Post parameters in JSON format in the body of the request: `{ username: ..., ema
 curl -X POST https://api.xerts.io/api/members -d \
   "{ \
     'phone': 'string', \
-    'fname': 'string', \
-    'lname': 'string', \
+    'firstName': 'string', \
+    'lastName': 'string', \
     'username': 'string', \
     'password': 'string', \
     'email': 'string', \
@@ -285,8 +285,8 @@ curl -X POST https://api.xerts.io/api/members -d \
 {
   "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
   "phone": "023584620",
-  "fname": "Micky",
-  "lname": "Blue",
+  "firstName": "Micky",
+  "lastName": "Blue",
   "username": "mblurulez",
   "email": "bluezey@gmail.com",
   "status": "active",
@@ -313,8 +313,8 @@ phone |N       |String|N |User contact Phone
 vendorOwner |N       |String|N |user type is vendor owner - can create new vendors
 siteOwner |N       |String|N |user type is site owner - can create sites and manage them
 appProvider |N       |String|N |usually an organisation developing an app for 3rd party - appProviders receive API Keys that allow their 'App' to access teh API.
-fname |N       |String|N |First Name                               
-lname |N       |String|N |Last Name                               
+firstName |N       |String|N |First Name                               
+lastName |N       |String|N |Last Name                               
 
 ## Log a user in
 
@@ -360,13 +360,13 @@ password |Y       |String|N | users's password
 ```shell
 curl -X POST https://api.xerts.io/api/members/:id/vendors -d
   "{ \
-    'vendor_name': 'string', \
-    'head_office_address1': 'string', \
-    'head_office_address2': 'string', \
-    'head_office_zipcode': 'string', \
-    'head_office_city': 'string', \
-    'head_office_country': 'string', \
-    'head_office_phone': 'string', \
+    'vendorName': 'string', \
+    'headOfficeAddress1': 'string', \
+    'headOfficeAddress2': 'string', \
+    'headOfficeZipcode': 'string', \
+    'headOfficeCity': 'string', \
+    'headOfficeCountry': 'string', \
+    'headOfficePhone': 'string', \
     'description': 'string' \
   }" \
   -H "Authorization: <Authorization key>" \
@@ -378,13 +378,13 @@ curl -X POST https://api.xerts.io/api/members/:id/vendors -d
 ```json
 {
   "id": "9e3b8410-27a0-11e6-82bf-27ccd35b24dd",
-  "vendor_name": "Kihn, Lang and Kub",
-  "head_office_address1": "762 Alexane Key",
-  "head_office_address2": "Apt. 160",
-  "head_office_zipcode": "66893",
-  "head_office_city": "Rubietown",
-  "head_office_country": "Argentina",
-  "head_office_phone": "1-653-021-8946 x487",
+  "vendorName": "Kihn, Lang and Kub",
+  "headOfficeAddress1": "762 Alexane Key",
+  "headOfficeAddress2": "Apt. 160",
+  "headOfficeZipcode": "66893",
+  "headOfficeCity": "Rubietown",
+  "headOfficeCountry": "Argentina",
+  "headOfficePhone": "1-653-021-8946 x487",
   "description": "Sint tenetur consequatur qui aperiam debitis recusandae ea nihil blanditiis. Eos fugiat rerum mollitia ea. In iusto ut exercitationem ducimus. Fugiat quis quis sit et aliquid ut modi id.",
   "ownerId": "9e1118b0-27a0-11e6-82bf-27ccd35b24dd"
 }
@@ -405,14 +405,14 @@ vendor for.
 
  Parameter | Required | Type | ID | Description
 ----------|----------|------|----|--------------------------------------
- vendor_name         |Y       |String|N |Name of the organisation              
- head_office_address1|Y       |String|N |Address First line                    
- head_office_address2|N       |String|N |Address Second line                   
- head_office_address3|N       |String|N |Address Third line                    
- head_office_zipcode |Y       |String|N |Zipcode                               
- head_office_city    |Y       |String|N |City / Province                       
- head_office_country |Y       |String|N |Country                               
- head_office_phone   |N       |String|N |Contact Phone number                  
+ vendorName         |Y       |String|N |Name of the organisation              
+ headOfficeAddress1|Y       |String|N |Address First line                    
+ headOfficeAddress2|N       |String|N |Address Second line                   
+ headOfficeAddress3|N       |String|N |Address Third line                    
+ headOfficeZipcode |Y       |String|N |Zipcode                               
+ headOfficeCity    |Y       |String|N |City / Province                       
+ headOfficeCountry |Y       |String|N |Country                               
+ headOfficePhone   |N       |String|N |Contact Phone number                  
  description         |Y       |String|N |Address First line
 
 ## Create a Site for a Vendor
@@ -473,8 +473,8 @@ vendor for.
 curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
   "{ \
     'phone': 'string', \
-    'fname': 'string', \
-    'lname': 'string', \
+    'firstName': 'string', \
+    'lastName': 'string', \
     'username': 'string', \
     'password': 'string', \
     'email': 'string', \
@@ -491,8 +491,8 @@ curl -X POST https://api.xerts.io/api/vendors/:id/members -d \
 {
   "id": "d426a9c0-22fe-11e6-96a3-bdf7343ebeee",
   "phone": "023584620",
-  "fname": "Micky",
-  "lname": "Blue",
+  "firstName": "Micky",
+  "lastName": "Blue",
   "username": "mblurulez",
   "email": "bluezey@gmail.com",
   "status": "active",
@@ -520,8 +520,8 @@ email |Y       |String|N |Conforms to User model
 password |Y       |String|N |Conforms to User model                   
 phone |N       |String|N |User contact Phone                    
 vendorOwner |N       |String|N |flag for user being a vendor owner                              
-fname |N       |String|N |First Name                               
-lname |N       |String|N |Last Name  
+firstName |N       |String|N |First Name                               
+lastName |N       |String|N |Last Name  
 
 ## Add a Site Admin
 
@@ -580,9 +580,9 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST \ https://api.xerts.io/api/vendo
   "{ \
     'title': 'string', \
     'description': 'string', \
-    'style_bordercolor': 'string', \
-    'style_backgroundcolor': 'string', \
-    'feature_image': 'URL-String' \
+    'styleBorderColor': 'string', \
+    'styleBackgroundColor': 'string', \
+    'featureImage': 'URL-String' \
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -594,9 +594,9 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X POST \ https://api.xerts.io/api/vendo
   "id": "58b52db0-22e6-11e6-b8de-1b32b0fa4bd3",
   "title": "West Bufordview",
   "description": "Illo aliquid eos velit quod. Eveniet facere vitae officia. Aliquam veniam iste. Adipisci laboriosam rerum eum ad ut molestiae hic. Doloremque et sit beatae reiciendis nisi reprehenderit eum ut ea.\n \rId voluptas quia non sunt distinctio. Molestiae alias maxime veritatis blanditiis vitae voluptas vitae non maiores. Nam cupiditate voluptatibus est aut. Qui repudiandae reiciendis in cumque dicta amet ipsum.\n \rConsequatur et magnam. Dicta corporis quasi sint distinctio neque et quis et. Quo nemo iste eveniet quibusdam suscipit velit sed.",
-  "style_bordercolor": "mint green",
-  "style_backgroundcolor": "blue",
-  "feature_image": "http://lorempixel.com/720/300/",
+  "styleBorderColor": "mint green",
+  "styleBackgroundColor": "blue",
+  "featureImage": "http://lorempixel.com/720/300/",
   "vendorId": "5887b510-22e6-11e6-b8de-1b32b0fa4bd3"
 }
 ```
@@ -618,9 +618,9 @@ vendor for.
 ----------|----------|------|----|-------------------------------
 title         |Y       |String|N |The site title
 description         |Y       |String|N |Description of the site
-style_bordercolor         |Y       |String|N |Border color styling
-style_backgroundcolor         |Y       |String|N |Background color styling
-feature_imagae         |Y       |String|N |Feature image for offer/coupon.
+styleBorderColor         |Y       |String|N |Border color styling
+styleBackgroundColor         |Y       |String|N |Background color styling
+featureImage         |Y       |String|N |Feature image for offer/coupon.
 vendorId         |Y       |String|N |Owning vendor ID
 
 ## Add an Offer to a Site
@@ -630,11 +630,11 @@ vendorId         |Y       |String|N |Owning vendor ID
 ```shell
 curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/offers/:id/sites/rel/:siteId -d \
   "{ \
-    'instance_cost': 0.12, \
-    'instance_limit': 1000, \
-    'instance_issues': 3, \
-    'total_cost': 120.00, \
-    'instance_expiry_date': '2017-05-26' \
+    'instanceCost': 0.12, \
+    'instanceLimit': 1000, \
+    'instanceIssues': 3, \
+    'totalCost': 120.00, \
+    'instanceExpiresOn': '2017-05-26' \
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -644,11 +644,11 @@ curl -H "Authorization: <ACCESS_TOKEN>" -X PUT \ https://api.xerts.io/api/offers
 ```json
 {
   "id": "748ec710-22e8-11e6-953c-b1e050c9762d",
-  "instance_cost": 0.12,
-  "instance_limit": 1010,
-  "instance_issues": 1,
-  "total_cost": 121.19999999999999,
-  "instance_expiry_date": "2017-05-26",
+  "instanceCost": 0.12,
+  "instanceLimit": 1010,
+  "instanceIssues": 1,
+  "totalCost": 121.19999999999999,
+  "instanceExpiresOn": "2017-05-26",
   "offerId": "748d1960-22e8-11e6-953c-b1e050c9762d",
   "siteId": "74651f00-22e8-11e6-953c-b1e050c9762d"
 }
@@ -668,13 +668,13 @@ This endpoint assigns an offer to a site. If an offer is assigned to a site, cli
 
  Parameter | Required | Type | ID | Description
 ----------|----------|------|----|-------------------------------
-instance_cost         |Y       |String|N |Cost per coupon
-instance_limit         |Y       |String|N |Maximum number of coupons to be issued
-instance_issues         |Y       |String|N |Number of coupons been issued
-total_cost         |Y       |String|N |Total cost of campaign, given instance_cost and instance_limit
-instance_start_issue_date         |N       |String|N |Time of first coupon issue
-instance_last_issue_date         |N       |String|N |Last time a coupon was issued
-instance_expiry_date         |N       |String|N |expiry date of offer at site
+instanceCost         |Y       |String|N |Cost per coupon
+instanceLimit         |Y       |String|N |Maximum number of coupons to be issued
+instanceIssues         |Y       |String|N |Number of coupons been issued
+totalCost         |Y       |String|N |Total cost of campaign, given instanceCost and instanceLimit
+instanceStartIssueOn |N       |String|N |Time of first coupon issue
+instanceLastIssueOn |N       |String|N |Last time a coupon was issued
+instanceExpiresOn |N       |String|N |expiry date of offer at site
 
 ## Get all coupons for a Site
 
@@ -692,17 +692,17 @@ curl -X POST https://api.xerts.io/api/sites/:siteId/coupons \
   "results": [
     {
       "id": 36,
-      "redeem_code": "D068Y",
-      "redeemed_date": "2016-05-30T06:54:36.000Z",
+      "redeemCode": "D068Y",
+      "redeemedOn": "2016-05-30T06:54:36.000Z",
       "deviceId": "656e6b6d-6a69-4e48-b66c-b917d3561ef0",
       "siteOfferId": "5f750170-2633-11e6-a10f-a197e0a3258d",
       "offer": {
         "id": "5f732cb0-2633-11e6-a10f-a197e0a3258d",
         "title": "North Lucileton",
         "description": "Quia aut unde quas consequuntur qui corporis maxime. Eum expedita consequatur dolore veritatis doloribus ullam perspiciatis. Aliquam aut sint atque. Quas autem officia et tempore sit reprehenderit veritatis dignissimos quidem.\n \rIpsa excepturi numquam nemo. Distinctio ad non est quo atque consequatur. Provident nihil accusantium qui. Necessitatibus soluta suscipit nobis commodi nihil deserunt sint corrupti recusandae. Itaque et et voluptas perspiciatis impedit quas quae aut.\n \rCommodi aspernatur provident odio beatae temporibus nam libero. Nihil enim voluptatum nostrum unde. Itaque velit consequuntur. Voluptas atque doloribus eligendi. Qui minima velit voluptates.",
-        "style_bordercolor": "mint green",
-        "style_backgroundcolor": "azure",
-        "feature_image": "http://lorempixel.com/720/300/",
+        "styleBorderColor": "mint green",
+        "styleBackgroundColor": "azure",
+        "featureImage": "http://lorempixel.com/720/300/",
         "vendorId": "5f440660-2633-11e6-a10f-a197e0a3258d"
       }
     }
@@ -742,29 +742,29 @@ curl -X GET https://api.xerts.io/api/reporting/vendors/:id?from=28-07-2016&to=14
 
 ```json
 {
-	"total_coupons_issued": 30,
-	"total_coupons_redeemed": 10,
+	"totalCouponsIssued": 30,
+	"totalCouponsRedeemed": 10,
 	"sites": [
 		"58c4fd10-31e5-11e6-n0a9-d3c289387tga" : {
       "id": "58c4fd10-31e5-11e6-n0a9-d3c289387tga",
 			"label": "O\\'connel Street Bakery",
-			"active_offers": 1,
-			"coupons_issued": 15,
-			"coupons_redeemed": 2
+			"activeOffers": 1,
+			"couponsIssued": 15,
+			"couponsRedeemed": 2
 		},
 		"68c5fd11-31e5-11e6-n0a9-d3c289387tga" : {
       "id": "68c5fd11-31e5-11e6-n0a9-d3c289387tga",
 			"label": "Main North Road On the Run",
-			"active_offers": 1,
-			"coupons_issued": 10,
-			"coupons_redeemed": 5
+			"activeOffers": 1,
+			"couponsIssued": 10,
+			"couponsRedeemed": 5
 		},
 		"78d5fd14-31e6-11e6-n0a9-d3c289387tga" : {
       "id": "78d5fd14-31e6-11e6-n0a9-d3c289387tga",
 			"label": "Anzac Hwy On the Run",
-			"active_offers": 1,
-			"coupons_issued": 5,
-			"coupons_redeemed": 1
+			"activeOffers": 1,
+			"couponsIssued": 5,
+			"couponsRedeemed": 1
     }
 	],
 	"from": "28-07-2016",
@@ -801,29 +801,29 @@ curl -X GET https://api.xerts.io/api/reporting/sites/:id?from=28-07-2016&to=14-0
 
 ```json
 {
-	"total_coupons_issued": 30,
-	"total_coupons_redeemed": 10,
+	"totalCouponsIssued": 30,
+	"totalCouponsRedeemed": 10,
 	"vendors": [
 		"48c4fd10-31e5-11e6-n0a9-d3c289387tga" : {
       "id": "48c4fd10-31e5-11e6-n0a9-d3c289387tga",
 			"label": "Dymocks Books",
-			"active_offers": 2,
-			"coupons_issued": 15,
-			"coupons_redeemed": 2
+			"activeOffers": 2,
+			"couponsIssued": 15,
+			"couponsRedeemed": 2
 		},
 		"48c5fd11-31e5-11e6-n0a9-d3c289387tga" : {
       "id": "48c5fd11-31e5-11e6-n0a9-d3c289387tga",
 			"label": "Mayhem Fireworks Co.",
-			"active_offers": 1,
-			"coupons_issued": 10,
-			"coupons_redeemed": 5
+			"activeOffers": 1,
+			"couponsIssued": 10,
+			"couponsRedeemed": 5
 		},
 		"48d5fd14-31e6-11e6-n0a9-d3c289387tga" : {
       "id": "48d5fd14-31e6-11e6-n0a9-d3c289387tga",
 			"label": "Amazing Harry\'s Delicious Candy",
-			"active_offers": 3,
-			"coupons_issued": 5,
-			"coupons_redeemed": 1
+			"activeOffers": 3,
+			"couponsIssued": 5,
+			"couponsRedeemed": 1
     }
 	],
 	"from": "28-07-2016",
@@ -859,8 +859,8 @@ This endpoint gets all vendor coupons issued and redeemed for a site between two
 curl -X POST https://api.xerts.io/api/device/ -d \
   "{ \
     'id': 'xxxx-xxxx-xxxx-xxxxx', \
-    'device_model': 'iPhone 6s', \
-    'device_os': 'iOS 9.3' \
+    'deviceModel': 'iPhone 6s', \
+    'deviceOs': 'iOS 9.3' \
   }" \
   -H "API-Key: '<Insert API Key here>'"
 ```
@@ -870,8 +870,8 @@ curl -X POST https://api.xerts.io/api/device/ -d \
 ```json
 {
   "id": "89611c2c-f016-4e3b-8078-6abe40550552",
-  "device_model": "iPhone 6s",
-  "device_os": "iOS 9.3"
+  "deviceModel": "iPhone 6s",
+  "deviceOs": "iOS 9.3"
 }
 ```
 
@@ -886,8 +886,8 @@ This endpoint creates a client device in the system. At this time there are no u
  Parameter | Required | Type | ID | Description
 ----------|----------|------|----|-------------------------------
 id         |Y       |String|Y |A unique identifier for the device will be posted to the API, generated by the client device it's self.
-device_model         |N       |String|N |Device model eg. iPhone 7
-device_os         |N       |String|N |The operating system and version number.
+deviceModel         |N       |String|N |Device model eg. iPhone 7
+deviceOs         |N       |String|N |The operating system and version number.
 
 ## Check if a device exists
 
