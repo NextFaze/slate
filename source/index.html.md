@@ -83,14 +83,13 @@ triggerOn             | date       | The trigger will cause the coupon to become
 triggerLocation       | geopoint   | The coupon will activate when the user visits the specified location
 triggerLocationRadius | number     | A radius, in metres, used in conjunction with triggerLocation. Specifies a distance from the location on which to trigger the coupon.
 triggerLocationPoly   | geopoint[] | An array of points that define a polygon. The trigger will fire when the user enters the area specified by the polygon
-activeOn              | date       | ?
-expiresOn             | date       | ?
+activeOn              | date       | ? 
 afterTrigger          | string     | ?
 timeAfterTrigger      | number     | This trigger will fire X minutes after the previous trigger
 dateAfterTrigger      | number     | ?
 firesAfter            | object     | ?
 
-A trigger's type is defined by which of these properties it contains. For a location based trigger would look like this:
+> A trigger's type is defined by which of these properties it contains. For a location based trigger would look like this:
 
 ```json
 {
@@ -103,7 +102,7 @@ A trigger's type is defined by which of these properties it contains. For a loca
 }
 ```
 
-Where as a time based trigger would only have the triggerOn property:
+> Where as a time based trigger would only have the triggerOn property:
 
 ```json
 {
@@ -115,6 +114,7 @@ Where as a time based trigger would only have the triggerOn property:
 ### Chaining triggers
 Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. The array of triggers returned by the server would look like:
 
+> A sequence of triggers for a coupon that activates two hours after a user visits a location would look like this:
 ```json
 [
   {
