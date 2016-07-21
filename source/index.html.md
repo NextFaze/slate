@@ -68,7 +68,71 @@ App Provider       | A user who provides an application (web/iOS/Android) to acc
 Site Owner         | A Client User who has one or multiple sites (physical sales locations).
 Vendor Owner       | A User that has control over a vendor organisation and it's offers.
 
+# Coupons
 
+## Triggers
+A Site offer can contain zero or more *Triggers* which affect the behaviour of a coupon on the user's device. A coupon should become active (able to be redeemed) once all triggers have fired. Note that the server does not store any information about whether triggers have fired or not; this happens entirely on the user's device. Rather, the server defines what triggers *should* be required before a coupon becomes active. If there are no triggers, the coupon should activate immediately.
+
+Triggers have the following properties:
+
+
+Property              | Type       | Description
+----------------------|------------|---------------------------------------------------------
+id                    | string     | A unique identifier for the Trigger
+triggerOn             | date       | The trigger will cause the coupon to become active on this date
+triggerLocation       | geopoint   | The coupon will activate when the user visits the specified location
+triggerLocationRadius | number     | A radius, in metres, used in conjunction with triggerLocation. Specifies a distance from the location on which to trigger the coupon.
+triggerLocationPoly   | geopoint[] | An array of points that define a polygon. The trigger will fire when the user enters the area specified by the polygon
+activeOn              | date       | ?
+expiresOn             | date       | ?
+afterTrigger          | string     | ?
+timeAfterTrigger      | number     | This trigger will fire X minutes after the previous trigger
+dateAfterTrigger      | number     | ?
+firesAfter            | object     | ?
+
+A trigger's type is defined by which of these properties it contains. For a location based trigger would look like this:
+
+```json
+{
+  "id": "1234",
+  "triggerLocation": {
+    "lat": 37,
+    "lng": 20 
+  },
+  "triggerRadius": 30
+}
+```
+
+Where as a time based trigger would only have the triggerOn property:
+
+```json
+{
+  "id": "1234",
+  "triggerOn": "2016-05-30T03:14:18.000Z"
+}
+```
+
+### Chaining triggers
+Interesting sequences of events can be created by chaining triggers together. For example, suppose a coupon should activate 2 hours after the user visits a location. This would be accomplished by chaining a location trigger to a timeAfter trigger. The array of triggers returned by the server would look like:
+
+```json
+[
+  {
+    "id": "1234",
+    "triggerLocation": {
+      "lat": 37,
+      "lng": 20 
+    },
+    "triggerRadius": 30
+  },
+  {
+    "id": "4567",
+    "timeAfterTrigger": 120
+  }
+]
+```
+
+   
 # Client Action Endpoints
 
 ## Create Coupons for Device at Site
