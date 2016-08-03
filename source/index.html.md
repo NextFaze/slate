@@ -197,21 +197,68 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
 ```json
 {
   "results": [
-    {
-      "id": "9e6c7f20-27a0-11e6-82bf-27ccd35b24dd",
-      "redeemCode": "Q70Q7",
-      "deviceId": "89611c2c-f016-4e3b-8078-6abe40550552",
-      "siteOfferId": "748ec710-22e8-11e6-953c-b1e050c9762d",
-      "offer": {
-        "id": "748d1960-22e8-11e6-953c-b1e050c9762d",
-        "title": "Port Francis",
-        "description": "Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non.",
-        "styleBorderColor": "grey",
-        "styleBackgroundColor": "salmon",
-        "featureImage": "http://lorempixel.com/720/300/",
-        "vendorId": "7461eab0-22e8-11e6-953c-b1e050c9762d"
-      }
-    }
+  {
+    "id": "26db3760-5844-11e6-8af5-9d711fe30147",
+    "redeemCode": "Y2BMA",
+    "redeemedOn": "2016-08-02T01:28:08.000Z",
+    "expiresOn": "2016-08-09T00:00:41.447Z",
+    "deviceId": "cf570da0-456e-42b8-a3ac-fa6062e9a955",
+    "createdOn": "2016-08-02T00:00:41.430Z",
+    "updatedOn": "2016-08-02T01:28:08.073Z",
+    "siteOfferId": "26d25dc0-5844-11e6-8af5-9d711fe30147",
+    "offer": {
+      "id": "26ce1800-5844-11e6-8af5-9d711fe30147",
+      "title": "Makaylaberg",
+      "description": "Perferendis unde et vero. Minus rerum vel eveniet id nihil velit et culpa. Tempore dolores alias ratione iste quod libero aut reiciendis expedita. Voluptatibus dolores et dignissimos ut neque. Odio ipsum ex fugiat provident ut et. Voluptas illum unde voluptatibus illum sit.\n \rQuia corporis itaque qui sunt eum. Soluta qui sint id eos voluptate voluptate delectus qui voluptatum. Dolores rem corrupti. In illo sunt illum quis aut corrupti recusandae. Occaecati aperiam et eos iusto. Atque libero assumenda voluptatem odio necessitatibus ut soluta qui iste.\n \rQui enim illo. Odio molestias minima aperiam iure exercitationem quia consequatur tenetur. Et voluptatem molestias repellat ea dolorum ut voluptatem.",
+      "styleBorderColor": "green",
+      "styleBackgroundColor": "magenta",
+      "featureImage": "string",
+      "url": null,
+      "vendorId": "267a52b0-5844-11e6-8af5-9d711fe30147"
+    },
+    "redemptionSite": {
+      "id": "26ca4770-5844-11e6-8af5-9d711fe30147",
+      "title": "Bodeborough",
+      "address": "62776 Kerluke Ville",
+      "gps": {
+        "lng": 102.2364,
+        "lat": -35.4664
+      },
+      "adminId": "26a0c670-5844-11e6-8af5-9d711fe30147"
+    },
+    "triggers": []
+  },
+  {
+    "id": "f6444060-5843-11e6-8864-b9214aa1b815",
+    "redeemCode": "INLZH",
+    "redeemedOn": "2016-08-01T23:59:22.000Z",
+    "expiresOn": "2016-08-08T23:59:19.927Z",
+    "deviceId": "7702f09e-425d-4370-b893-3940f3de182a",
+    "createdOn": "2016-08-01T23:59:19.910Z",
+    "updatedOn": "2016-08-01T23:59:22.121Z",
+    "siteOfferId": "f63fac80-5843-11e6-8864-b9214aa1b815",
+    "offer": {
+      "id": "f63b8dd0-5843-11e6-8864-b9214aa1b815",
+      "title": "Abernathymouth",
+      "description": "Maiores vel rerum est. Quia cum ut omnis consequatur et quibusdam quidem. Vel accusamus id eius et nobis repudiandae. Id doloribus natus velit eum.\n \rNihil dolores totam rerum provident aut voluptatibus qui odio. Officia hic voluptas. Asperiores voluptas et perspiciatis voluptates amet laudantium voluptatibus et. Rerum ullam fuga qui. Quam tenetur veniam dolores qui exercitationem eos quod expedita.\n \rNostrum labore omnis ut recusandae minima. Ullam sint totam nulla quibusdam in enim quo. Omnis officia vel ea sequi tempora. Itaque sint in.",
+      "styleBorderColor": "salmon",
+      "styleBackgroundColor": "azure",
+      "featureImage": "string",
+      "url": null,
+      "vendorId": "f435f9d0-5843-11e6-8864-b9214aa1b815"
+    },
+    "redemptionSite": {
+      "id": "f6376f20-5843-11e6-8864-b9214aa1b815",
+      "title": "Port Margarettview",
+      "address": "878 Herman Estate",
+      "gps": {
+        "lng": -80.1553,
+        "lat": 75.6046
+      },
+      "adminId": "f533bac0-5843-11e6-8864-b9214aa1b815"
+    },
+    "triggers": []
+  }
   ]
 }
 ```
@@ -260,36 +307,68 @@ curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId \
 ```json
 {
   "results": [
-    {
-      "id": 10,
-      "redeemCode": "9CJBG",
-      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
-      "siteOfferId": "d634c6d0-25ff-11e6-b75e-7bf1c637b078",
-      "offer": {
-        "id": "d62fe4d0-25ff-11e6-b75e-7bf1c637b078",
-        "title": "Port Hal",
-        "description": "Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate.",
-        "styleBorderColor": "sky blue",
-        "styleBackgroundColor": "magenta",
-        "featureImage": "http://lorempixel.com/720/300/",
-        "vendorId": "d6055260-25ff-11e6-b75e-7bf1c637b078"
-      }
+  {
+    "id": "26db3760-5844-11e6-8af5-9d711fe30147",
+    "redeemCode": "Y2BMA",
+    "redeemedOn": ,
+    "expiresOn": "2016-08-09T00:00:41.447Z",
+    "deviceId": "cf570da0-456e-42b8-a3ac-fa6062e9a955",
+    "createdOn": "2016-08-02T00:00:41.430Z",
+    "updatedOn": "2016-08-02T01:28:08.073Z",
+    "siteOfferId": "26d25dc0-5844-11e6-8af5-9d711fe30147",
+    "offer": {
+      "id": "26ce1800-5844-11e6-8af5-9d711fe30147",
+      "title": "Makaylaberg",
+      "description": "Perferendis unde et vero. Minus rerum vel eveniet id nihil velit et culpa. Tempore dolores alias ratione iste quod libero aut reiciendis expedita. Voluptatibus dolores et dignissimos ut neque. Odio ipsum ex fugiat provident ut et. Voluptas illum unde voluptatibus illum sit.\n \rQuia corporis itaque qui sunt eum. Soluta qui sint id eos voluptate voluptate delectus qui voluptatum. Dolores rem corrupti. In illo sunt illum quis aut corrupti recusandae. Occaecati aperiam et eos iusto. Atque libero assumenda voluptatem odio necessitatibus ut soluta qui iste.\n \rQui enim illo. Odio molestias minima aperiam iure exercitationem quia consequatur tenetur. Et voluptatem molestias repellat ea dolorum ut voluptatem.",
+      "styleBorderColor": "green",
+      "styleBackgroundColor": "magenta",
+      "featureImage": "string",
+      "url": null,
+      "vendorId": "267a52b0-5844-11e6-8af5-9d711fe30147"
     },
-    {
-      "id": 11,
-      "redeemCode": "AO5XW",
-      "deviceId": "255e294a-34dc-4a4e-a80a-d4bb98890e5c",
-      "siteOfferId": "6ead4970-25fe-11e6-9f99-1520fe63256a",
-      "offer": {
-        "id": "6eab9bc0-25fe-11e6-9f99-1520fe63256a",
-        "title": "Millershire",
-        "description": "Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos.",
-        "styleBorderColor": "maroon",
-        "styleBackgroundColor": "lime",
-        "featureImage": "http://lorempixel.com/720/300/",
-        "vendorId": "6e7fa9c0-25fe-11e6-9f99-1520fe63256a"
-      }
-    }
+    "redemptionSite": {
+      "id": "26ca4770-5844-11e6-8af5-9d711fe30147",
+      "title": "Bodeborough",
+      "address": "62776 Kerluke Ville",
+      "gps": {
+        "lng": 102.2364,
+        "lat": -35.4664
+      },
+      "adminId": "26a0c670-5844-11e6-8af5-9d711fe30147"
+    },
+    "triggers": []
+  },
+  {
+    "id": "f6444060-5843-11e6-8864-b9214aa1b815",
+    "redeemCode": "INLZH",
+    "redeemedOn": "2016-08-01T23:59:22.000Z",
+    "expiresOn": "2016-08-08T23:59:19.927Z",
+    "deviceId": "7702f09e-425d-4370-b893-3940f3de182a",
+    "createdOn": "2016-08-01T23:59:19.910Z",
+    "updatedOn": "2016-08-01T23:59:22.121Z",
+    "siteOfferId": "f63fac80-5843-11e6-8864-b9214aa1b815",
+    "offer": {
+      "id": "f63b8dd0-5843-11e6-8864-b9214aa1b815",
+      "title": "Abernathymouth",
+      "description": "Maiores vel rerum est. Quia cum ut omnis consequatur et quibusdam quidem. Vel accusamus id eius et nobis repudiandae. Id doloribus natus velit eum.\n \rNihil dolores totam rerum provident aut voluptatibus qui odio. Officia hic voluptas. Asperiores voluptas et perspiciatis voluptates amet laudantium voluptatibus et. Rerum ullam fuga qui. Quam tenetur veniam dolores qui exercitationem eos quod expedita.\n \rNostrum labore omnis ut recusandae minima. Ullam sint totam nulla quibusdam in enim quo. Omnis officia vel ea sequi tempora. Itaque sint in.",
+      "styleBorderColor": "salmon",
+      "styleBackgroundColor": "azure",
+      "featureImage": "string",
+      "url": null,
+      "vendorId": "f435f9d0-5843-11e6-8864-b9214aa1b815"
+    },
+    "redemptionSite": {
+      "id": "f6376f20-5843-11e6-8864-b9214aa1b815",
+      "title": "Port Margarettview",
+      "address": "878 Herman Estate",
+      "gps": {
+        "lng": -80.1553,
+        "lat": 75.6046
+      },
+      "adminId": "f533bac0-5843-11e6-8864-b9214aa1b815"
+    },
+    "triggers": []
+  }
   ]
 }
 ```
@@ -314,54 +393,7 @@ None.      |
 
 ## Redeem a coupon at a site for device
 
-> Use this command to get only site-specific coupons for device:
-
-```shell
-curl -X PUT \ https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code \
-  -H "API-Key: '<Insert API Key here>'"
-```
-
-> The above commands return JSON structured like this:
-
-```json
-{
-  "results": {
-    "id": 19,
-    "redeemCode": "B5Z7E",
-    "redeemedOn": "2016-05-30T03:14:18.000Z",
-    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
-    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
-  }
-}
-```
-
-> If the coupon is already redeemed, the following JSON response will boomerang:
-
-```json
-{
-  "error": {
-    "status": 404,
-    "message": "Coupon not found honey. Check if it's already been redeemed."
-  }
-}
-```
-
-This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
-If the coupon has already been redeemed, an error 404 will be returned.
-
-<aside class="notice">
-Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
-</aside>
-
-### HTTP Request
-
-`PUT https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
-
-### Body Parameters
-
- Parameter | Required | Type | ID | Description
------------|----------|------|----|-------------------------------
-None.      |
+The client does not have to make any requests to redeem a coupon. However, it should poll the server to get the state of coupons and update the UI if necessary.
 
 # Management Endpoints
 
