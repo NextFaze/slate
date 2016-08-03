@@ -182,6 +182,18 @@
 
 <h2 id="coupons">Coupons</h2>
 
+<h3 id="testing-whether-a-coupon-has-been-redeemed">Testing whether a coupon has been redeemed</h3>
+
+<p>The JSON Response for a coupon contains a <code class="prettyprint">redeemedOn</code> property that is defined if a coupon has been redeemed. If a coupon has not been redeemed then this property will not be present.</p>
+
+<blockquote>
+<p>Test whether a coupon has been redeemed:</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="k">if</span> <span class="p">(</span><span class="nx">coupon</span><span class="p">.</span><span class="nx">redeemedOn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// coupon has already been redeemed</span>
+<span class="p">}</span>
+</code></pre>
+
 <h3 id="coupon-expiration">Coupon Expiration</h3>
 
 <p>Coupon expiration can be defined in a few different ways through the SiteOffer. The relevant fields are:</p>
@@ -382,21 +394,67 @@
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9e6c7f20-27a0-11e6-82bf-27ccd35b24dd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q70Q7"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89611c2c-f016-4e3b-8078-6abe40550552"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748ec710-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"748d1960-22e8-11e6-953c-b1e050c9762d"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Port Francis"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ut sint qui sint. Corrupti autem incidunt iure nisi. At nulla deserunt saepe odio et esse adipisci. In harum ipsum rerum dolor est illo numquam et.\n \rMinus aut laboriosam accusantium dolores. Blanditiis assumenda eaque voluptas fuga fugit eius ipsum labore est. Non debitis est suscipit consectetur aut. Labore est vitae sed et odio quas explicabo ipsa qui. Perferendis vel aut.\n \rSed voluptatem temporibus. Aut voluptatibus voluptates qui aliquid hic et iusto quis. Eos sit nesciunt quod laudantium aspernatur sequi earum. Et occaecati eos cupiditate minima et. Facilis quaerat excepturi quod at eum quo neque consequuntur aliquid. Id culpa non."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grey"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7461eab0-22e8-11e6-953c-b1e050c9762d"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26db3760-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y2BMA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T01:28:08.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-09T00:00:41.447Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf570da0-456e-42b8-a3ac-fa6062e9a955"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T00:00:41.430Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T01:28:08.073Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26d25dc0-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26ce1800-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Makaylaberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perferendis unde et vero. Minus rerum vel eveniet id nihil velit et culpa. Tempore dolores alias ratione iste quod libero aut reiciendis expedita. Voluptatibus dolores et dignissimos ut neque. Odio ipsum ex fugiat provident ut et. Voluptas illum unde voluptatibus illum sit.\n \rQuia corporis itaque qui sunt eum. Soluta qui sint id eos voluptate voluptate delectus qui voluptatum. Dolores rem corrupti. In illo sunt illum quis aut corrupti recusandae. Occaecati aperiam et eos iusto. Atque libero assumenda voluptatem odio necessitatibus ut soluta qui iste.\n \rQui enim illo. Odio molestias minima aperiam iure exercitationem quia consequatur tenetur. Et voluptatem molestias repellat ea dolorum ut voluptatem."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"magenta"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"267a52b0-5844-11e6-8af5-9d711fe30147"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"redemptionSite"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26ca4770-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bodeborough"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62776 Kerluke Ville"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">102.2364</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">-35.4664</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"adminId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26a0c670-5844-11e6-8af5-9d711fe30147"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6444060-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INLZH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-08T23:59:19.927Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7702f09e-425d-4370-b893-3940f3de182a"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-01T23:59:19.910Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-01T23:59:22.121Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f63fac80-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f63b8dd0-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abernathymouth"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maiores vel rerum est. Quia cum ut omnis consequatur et quibusdam quidem. Vel accusamus id eius et nobis repudiandae. Id doloribus natus velit eum.\n \rNihil dolores totam rerum provident aut voluptatibus qui odio. Officia hic voluptas. Asperiores voluptas et perspiciatis voluptates amet laudantium voluptatibus et. Rerum ullam fuga qui. Quam tenetur veniam dolores qui exercitationem eos quod expedita.\n \rNostrum labore omnis ut recusandae minima. Ullam sint totam nulla quibusdam in enim quo. Omnis officia vel ea sequi tempora. Itaque sint in."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f435f9d0-5843-11e6-8864-b9214aa1b815"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"redemptionSite"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6376f20-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Port Margarettview"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"878 Herman Estate"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-80.1553</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">75.6046</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"adminId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f533bac0-5843-11e6-8864-b9214aa1b815"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -452,36 +510,67 @@
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9CJBG"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255e294a-34dc-4a4e-a80a-d4bb98890e5c"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d634c6d0-25ff-11e6-b75e-7bf1c637b078"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d62fe4d0-25ff-11e6-b75e-7bf1c637b078"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Port Hal"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perferendis nihil dicta suscipit. Aperiam ex quibusdam error sit molestias quo dolor veniam deleniti. Natus magni molestiae at sint nihil excepturi incidunt. Sequi nobis molestiae asperiores laboriosam suscipit autem est. Quidem eos vitae nesciunt fugit qui sunt. Minus ex alias.\n \rAd maxime sint quam blanditiis. Consequatur tempore aut quia assumenda ea placeat veritatis consequuntur. Quibusdam sed facilis suscipit velit aut voluptate. Quidem est eveniet dignissimos similique laborum dolores. Eos ut quod facere numquam nisi quo ut eum aliquam.\n \rEt corrupti iure facilis possimus repudiandae doloremque omnis repellendus harum. Omnis et impedit tenetur. Fugit quisquam consequatur veniam non nemo id est. Quia id est voluptas et et quia. Occaecati consequuntur ut eaque inventore dolorem distinctio quis aliquam. A temporibus odit ut placeat natus aut ipsam voluptate."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sky blue"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"magenta"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6055260-25ff-11e6-b75e-7bf1c637b078"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26db3760-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y2BMA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T01:28:08.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-09T00:00:41.447Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf570da0-456e-42b8-a3ac-fa6062e9a955"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T00:00:41.430Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-02T01:28:08.073Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26d25dc0-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26ce1800-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Makaylaberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perferendis unde et vero. Minus rerum vel eveniet id nihil velit et culpa. Tempore dolores alias ratione iste quod libero aut reiciendis expedita. Voluptatibus dolores et dignissimos ut neque. Odio ipsum ex fugiat provident ut et. Voluptas illum unde voluptatibus illum sit.\n \rQuia corporis itaque qui sunt eum. Soluta qui sint id eos voluptate voluptate delectus qui voluptatum. Dolores rem corrupti. In illo sunt illum quis aut corrupti recusandae. Occaecati aperiam et eos iusto. Atque libero assumenda voluptatem odio necessitatibus ut soluta qui iste.\n \rQui enim illo. Odio molestias minima aperiam iure exercitationem quia consequatur tenetur. Et voluptatem molestias repellat ea dolorum ut voluptatem."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"magenta"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"267a52b0-5844-11e6-8af5-9d711fe30147"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AO5XW"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255e294a-34dc-4a4e-a80a-d4bb98890e5c"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ead4970-25fe-11e6-9f99-1520fe63256a"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6eab9bc0-25fe-11e6-9f99-1520fe63256a"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Millershire"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Facilis esse aliquid culpa molestiae illo consectetur animi expedita voluptatum. Exercitationem illum quaerat voluptate laboriosam deserunt commodi provident iure dolorum. Sapiente itaque veritatis.\n \rAb eaque laboriosam. Autem error corporis ullam. A eaque vel perspiciatis maxime aut eos quia enim ea.\n \rEst quia natus. Aperiam modi voluptatem. Quaerat sint enim quas quis dignissimos est. Aliquam nemo et. Ea cupiditate similique aut aut quos eos."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maroon"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lime"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lorempixel.com/720/300/"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e7fa9c0-25fe-11e6-9f99-1520fe63256a"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"redemptionSite"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26ca4770-5844-11e6-8af5-9d711fe30147"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bodeborough"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62776 Kerluke Ville"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">102.2364</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">-35.4664</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"adminId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26a0c670-5844-11e6-8af5-9d711fe30147"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6444060-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redeemCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INLZH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expiresOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-08T23:59:19.927Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7702f09e-425d-4370-b893-3940f3de182a"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-01T23:59:19.910Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-01T23:59:22.121Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siteOfferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f63fac80-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f63b8dd0-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abernathymouth"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maiores vel rerum est. Quia cum ut omnis consequatur et quibusdam quidem. Vel accusamus id eius et nobis repudiandae. Id doloribus natus velit eum.\n \rNihil dolores totam rerum provident aut voluptatibus qui odio. Officia hic voluptas. Asperiores voluptas et perspiciatis voluptates amet laudantium voluptatibus et. Rerum ullam fuga qui. Quam tenetur veniam dolores qui exercitationem eos quod expedita.\n \rNostrum labore omnis ut recusandae minima. Ullam sint totam nulla quibusdam in enim quo. Omnis officia vel ea sequi tempora. Itaque sint in."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBorderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"styleBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vendorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f435f9d0-5843-11e6-8864-b9214aa1b815"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"redemptionSite"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6376f20-5843-11e6-8864-b9214aa1b815"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Port Margarettview"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"878 Herman Estate"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gps"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-80.1553</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">75.6046</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"adminId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f533bac0-5843-11e6-8864-b9214aa1b815"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -518,12 +607,18 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 </tr>
 </tbody></table>
 
-<h2 id="redeem-a-coupon-at-a-site-for-device">Redeem a coupon at a site for device</h2>
+<h2 id="activate-a-coupon-for-redemption">Activate a coupon for redemption</h2>
+
+<p>Coupon Redemption is handled by the site administrator. The client app should make a request to activate a coupon for redemption. For example, when the user clicks a <strong>Redeem</strong> button on the client app.</p>
+
+<p>This causes the coupon to be displayed in a list of recently activated coupons for the site on the site admin interface. Operators can then simply click a redeem button without having to enter the redemption code.</p>
+
+<p>If this request cannot be made (for example, loss of network connection), then the coupon can still be redeemed. However, the site operator will need to manually enter the redemption code and verify the coupon.</p>
 
 <blockquote>
-<p>Use this command to get only site-specific coupons for device:</p>
+<p>Activate a coupon for redemption </p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X PUT <span class="se">\ </span>https://api.xerts.io/api/coupons/sites/:siteId/device/:deviceId/redeem/:code <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="se">\ </span>https://api.xerts.io/api/coupons/sites/:siteId/activate/:code <span class="se">\</span>
   -H <span class="s2">"API-Key: '&lt;Insert API Key here&gt;'"</span>
 </code></pre>
 
