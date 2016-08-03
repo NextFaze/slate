@@ -48,6 +48,18 @@ The following provides an example of the way the various data objects are relate
 
 ## Coupons
 
+### Testing whether a coupon has been redeemed
+
+The JSON Response for a coupon contains a `redeemedOn` property that is defined if a coupon has been redeemed. If a coupon has not been redeemed then this property will not be present.
+
+> Test whether a coupon has been redeemed:
+
+```javascript
+if (coupon.redeemedOn) {
+  // coupon has already been redeemed
+}
+```
+
 ### Coupon Expiration
 
 Coupon expiration can be defined in a few different ways through the SiteOffer. The relevant fields are:
@@ -231,7 +243,6 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
   {
     "id": "f6444060-5843-11e6-8864-b9214aa1b815",
     "redeemCode": "INLZH",
-    "redeemedOn": "2016-08-01T23:59:22.000Z",
     "expiresOn": "2016-08-08T23:59:19.927Z",
     "deviceId": "7702f09e-425d-4370-b893-3940f3de182a",
     "createdOn": "2016-08-01T23:59:19.910Z",
@@ -310,7 +321,7 @@ curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId \
   {
     "id": "26db3760-5844-11e6-8af5-9d711fe30147",
     "redeemCode": "Y2BMA",
-    "redeemedOn": ,
+    "redeemedOn": "2016-08-02T01:28:08.000Z",
     "expiresOn": "2016-08-09T00:00:41.447Z",
     "deviceId": "cf570da0-456e-42b8-a3ac-fa6062e9a955",
     "createdOn": "2016-08-02T00:00:41.430Z",
@@ -341,7 +352,6 @@ curl -X GET https://api.xerts.io/api/coupons/site/:siteId/devices/:deviceId \
   {
     "id": "f6444060-5843-11e6-8864-b9214aa1b815",
     "redeemCode": "INLZH",
-    "redeemedOn": "2016-08-01T23:59:22.000Z",
     "expiresOn": "2016-08-08T23:59:19.927Z",
     "deviceId": "7702f09e-425d-4370-b893-3940f3de182a",
     "createdOn": "2016-08-01T23:59:19.910Z",
@@ -391,9 +401,62 @@ Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe
 -----------|----------|------|----|-------------------------------
 None.      |
 
-## Redeem a coupon at a site for device
+## Activate a coupon for redemption 
 
-The client does not have to make any requests to redeem a coupon. However, it should poll the server to get the state of coupons and update the UI if necessary.
+Coupon Redemption is handled by the site administrator. The client app should make a request to activate a coupon for redemption. For example, when the user clicks a **Redeem** button on the client app.
+
+This causes the coupon to be displayed in a list of recently activated coupons for the site on the site admin interface. Operators can then simply click a redeem button without having to enter the redemption code.
+
+If this request cannot be made (for example, loss of network connection), then the coupon can still be redeemed. However, the site operator will need to manually enter the redemption code and verify the coupon.
+
+> Activate a coupon for redemption 
+
+```shell
+curl -X PUT \ https://api.xerts.io/api/coupons/sites/:siteId/activate/:code \
+  -H "API-Key: '<Insert API Key here>'"
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "results": {
+    "id": 19,
+    "redeemCode": "B5Z7E",
+    "redeemedOn": "2016-05-30T03:14:18.000Z",
+    "deviceId": "60ef5b5e-7229-4758-8184-da613de405a9",
+    "siteOfferId": "0583f660-2612-11e6-9206-cd9a11b559ba"
+  }
+}
+```
+
+> If the coupon is already redeemed, the following JSON response will boomerang:
+
+```json
+{
+  "error": {
+    "status": 404,
+    "message": "Coupon not found honey. Check if it's already been redeemed."
+  }
+}
+```
+
+This endpoint redeems a coupon with redeem code `:code` at site with id `siteId`.
+If the coupon has already been redeemed, an error 404 will be returned.
+
+<aside class="notice">
+Remember, `siteId` is a GUID, and should look something like this: 03548350-25fe-11e6-b93a-dd966e070e71
+</aside>
+
+### HTTP Request
+
+`PUT https://api.xerts.io/api/coupons/sites/:siteId/devices/:deviceId/redeem/:code`
+
+### Body Parameters
+
+ Parameter | Required | Type | ID | Description
+-----------|----------|------|----|-------------------------------
+None.      |
 
 # Management Endpoints
 
