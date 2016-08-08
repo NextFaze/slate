@@ -236,7 +236,18 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
         "lng": 102.2364,
         "lat": -35.4664
       },
-      "adminId": "26a0c670-5844-11e6-8af5-9d711fe30147"
+    },
+    "vendor": {
+      "id": "2b025ff0-5d33-11e6-baf6-25062dac8295",
+      "vendorName": "Auer, Douglas and Barrows",
+      "headOfficeAddress1": "081 Treutel Viaduct",
+      "headOfficeAddress2": "Suite 838",
+      "headOfficeAddress3": null,
+      "headOfficeZipcode": "65407",
+      "headOfficeCity": "North Gracielamouth",
+      "headOfficeCountry": "Pitcairn Islands",
+      "headOfficePhone": "414.592.2898 x95431",
+      "description": "Ex ut sequi autem aut nemo. Suscipit odit aut voluptas veniam esse reprehenderit quo dolores. Nulla nemo illum fuga et aspernatur accusamus quia. Ab qui est. Ex similique non voluptates deleniti tempora ea. Ullam ratione ex ut aut mollitia ut facilis quia.",
     },
     "triggers": []
   },
@@ -256,7 +267,6 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
       "styleBackgroundColor": "azure",
       "featureImage": "string",
       "url": null,
-      "vendorId": "f435f9d0-5843-11e6-8864-b9214aa1b815"
     },
     "redemptionSite": {
       "id": "f6376f20-5843-11e6-8864-b9214aa1b815",
@@ -266,7 +276,18 @@ curl -X POST https://api.xerts.io/api/siteOffers/:siteId/device/:deviceId \
         "lng": -80.1553,
         "lat": 75.6046
       },
-      "adminId": "f533bac0-5843-11e6-8864-b9214aa1b815"
+    },
+    "vendor": {
+      "id": "2b025ff0-5d33-11e6-baf6-25062dac8295",
+      "vendorName": "Auer, Douglas and Barrows",
+      "headOfficeAddress1": "081 Treutel Viaduct",
+      "headOfficeAddress2": "Suite 838",
+      "headOfficeAddress3": null,
+      "headOfficeZipcode": "65407",
+      "headOfficeCity": "North Gracielamouth",
+      "headOfficeCountry": "Pitcairn Islands",
+      "headOfficePhone": "414.592.2898 x95431",
+      "description": "Ex ut sequi autem aut nemo. Suscipit odit aut voluptas veniam esse reprehenderit quo dolores. Nulla nemo illum fuga et aspernatur accusamus quia. Ab qui est. Ex similique non voluptates deleniti tempora ea. Ullam ratione ex ut aut mollitia ut facilis quia.",
     },
     "triggers": []
   }
